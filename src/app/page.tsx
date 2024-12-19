@@ -1,8 +1,10 @@
+import { EditorContainer } from "@/components/Editor";
+
 function Page() {
   return (
-    <div>
+    <EditorContainer>
       <h1>Home</h1>
-    </div>
+    </EditorContainer>
   );
 }
 

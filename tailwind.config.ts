@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "editor-divider": "var(--editor-divider)",
       },
     },
   },
