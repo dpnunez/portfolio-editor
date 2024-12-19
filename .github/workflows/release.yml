@@ -29,6 +29,12 @@ jobs:
         run: npm clean-install
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
+      - name: Run unit tests (via vitest)
+        run: npm run test:unit
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run e2e tests (via Playwright)
+        run: npx playwright test
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
