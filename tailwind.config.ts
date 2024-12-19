@@ -12,6 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         "editor-divider": "var(--editor-divider)",
+        "editor-highlight": "var(--editor-highlight)",
       },
     },
   },
