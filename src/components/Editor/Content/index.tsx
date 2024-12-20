@@ -5,7 +5,7 @@ interface EditorContentProps {
 }
 
 function EditorContent({ children }: EditorContentProps) {
-  return <main className="flex flex-1">{children}</main>;
+  return <div className="flex flex-1">{children}</div>;
 }
 
 export { EditorContent };
