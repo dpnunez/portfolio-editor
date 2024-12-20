@@ -6,7 +6,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --editor-divider: #1e2d3d;
-  --editor-highlight: #fa7970;
+  --editor-primary: #fa7970;
+  --editor-secondary: #77bdfb;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -20,4 +21,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
