@@ -9,9 +9,7 @@ function Page() {
     <div className="overflow-hidden flex-1 flex items-center relative">
       <FadeIn className="gap-4 flex flex-col max-w-screen-md mx-auto flex-1">
         <span>Hi all, I&apos;m</span>
-        <h1 className="font-extrabold text-3xl md:text-6xl">
-          <span>Daniel Núñez</span>
-        </h1>
+        <h1 className="font-extrabold text-3xl md:text-6xl">Daniel Núñez</h1>
         <h2 className="text-lg mb-4">
           <span>{"> "}</span>
           <span>
