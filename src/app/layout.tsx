@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { Fira_Mono as FontSans } from "next/font/google";
 import "./globals.css";
-import { EditorContainer, Logo, Menu } from "@/components";
+import {
+  EditorContainer,
+  EditorContent,
+  EditorFooter,
+  Logo,
+  Menu,
+} from "@/components";
 import { cn } from "@/utils/styles";
 
 const fontSans = FontSans({
@@ -33,7 +39,8 @@ export default function RootLayout({
             <Logo />
             <Menu />
           </header>
-          {children}
+          <EditorContent>{children}</EditorContent>
+          <EditorFooter />
         </EditorContainer>
       </body>
     </html>
