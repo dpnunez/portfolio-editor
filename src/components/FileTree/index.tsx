@@ -29,7 +29,7 @@ function FileTree({ files, className }: FileTreeProps) {
                   <TreeRowContainer>
                     <ChevronDown
                       size={16}
-                      className="folder-indicator transition-all -rotate-90 absolute left-0"
+                      className="folder-indicator transition-all -rotate-90 absolute left-2"
                     />
                     <RowIcon>
                       <PiFolderSimpleDuotone size={14} />
@@ -59,7 +59,9 @@ function FileTree({ files, className }: FileTreeProps) {
 }
 
 function TreeRowContainer({ children }: { children: React.ReactNode }) {
-  return <div className="flex items-center px-5 relative">{children}</div>;
+  return (
+    <div className="flex items-center px-8 relative text-lg">{children}</div>
+  );
 }
 
 function RowIcon({ children }: { children: React.ReactNode }) {
