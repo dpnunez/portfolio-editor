@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fira_Mono as FontSans } from "next/font/google";
 import "./globals.css";
-import { EditorContainer, Menu } from "@/components";
+import { EditorContainer, Logo, Menu } from "@/components";
+import { cn } from "@/utils/styles";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontSans = FontSans({
+  weight: ["400", "500", "700"],
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
@@ -26,10 +23,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
       >
         <EditorContainer>
-          <header className="h-14 border-b border-editor-divider">
+          <header className="h-14 border-b border-editor-divider flex items-center">
+            <Logo />
             <Menu />
           </header>
           {children}

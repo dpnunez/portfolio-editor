@@ -16,7 +16,7 @@ function MenuItem({ children, href = "#", active }: MenuItemProps) {
       </div>
       <div
         className={cn(
-          "absolute h-[2px] w-full bg-editor-highlight opacity-0 group-hover:opacity-50 group-hover:bottom-0 transition-all -bottom-2",
+          "absolute h-[2px] w-full bg-editor-primary opacity-0 group-hover:opacity-50 group-hover:bottom-0 transition-all -bottom-2",
           {
             "!opacity-100 bottom-0": active,
           }
