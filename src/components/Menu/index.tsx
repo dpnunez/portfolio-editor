@@ -13,10 +13,10 @@ function Menu() {
   return (
     <nav className="h-full divide-x-1 flex max-h-16">
       <MenuItem active={isRouteActive("/about")} href="/about">
-        about.ts
+        /about.ts
       </MenuItem>
       <MenuItem active={isRouteActive("/projects")} href="/projects">
-        projects.db
+        /projects.db
       </MenuItem>
     </nav>
   );
