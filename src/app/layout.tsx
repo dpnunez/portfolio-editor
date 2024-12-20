@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fira_Mono as FontSans } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
+import "@/styles/prism/common.css";
 import {
   EditorContainer,
   EditorContent,
