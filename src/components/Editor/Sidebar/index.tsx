@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 
-interface FileExplorerProps {
+interface SidebarProps {
   children: ReactNode;
 }
 
-function FileExplorer({ children }: FileExplorerProps) {
+function Sidebar({ children }: SidebarProps) {
   return (
     <nav className="w-sidebar border-r border-editor-divider h-full">
       {children}
@@ -12,4 +12,4 @@ function FileExplorer({ children }: FileExplorerProps) {
   );
 }
 
-export { FileExplorer };
+export { Sidebar };
