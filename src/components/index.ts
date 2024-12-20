@@ -6,3 +6,4 @@ export * from "./Transition";
 export * from "./ThemeProvider";
 export * from "./Accordion";
 export * from "./FileTree";
+export * from "./Checkbox";

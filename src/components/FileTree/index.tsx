@@ -37,9 +37,9 @@ function FileTree({ files, className }: FileTreeProps) {
                       size={16}
                       className="folder-indicator transition-all -rotate-90 absolute left-2"
                     />
-                    <RowIcon>
+                    <TreeRowIcon>
                       <PiFolderSimpleDuotone size={14} />
-                    </RowIcon>
+                    </TreeRowIcon>
                     {item.name}
                   </TreeRowContainer>
                 </AccordionTrigger>
@@ -57,9 +57,9 @@ function FileTree({ files, className }: FileTreeProps) {
                 "bg-editor-divider": isActive,
               })}
             >
-              <RowIcon>
+              <TreeRowIcon>
                 <SiTypescript size={14} />
-              </RowIcon>
+              </TreeRowIcon>
               {item.name}
             </TreeRowContainer>
           </Link>
@@ -88,8 +88,8 @@ function TreeRowContainer({
   );
 }
 
-function RowIcon({ children }: { children: React.ReactNode }) {
+function TreeRowIcon({ children }: { children: React.ReactNode }) {
   return <div className="w-6">{children}</div>;
 }
 
-export { FileTree };
+export { FileTree, TreeRowContainer, TreeRowIcon };
