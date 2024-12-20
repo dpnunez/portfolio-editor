@@ -1,4 +1,4 @@
-import { Ascii, FadeIn } from "@/components";
+import { Ascii } from "@/components";
 import { computerAscii } from "@/constants/ascii";
 import { portfolioRepositoryLink } from "@/constants/links";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { PrismLight } from "react-syntax-highlighter";
 function Page() {
   return (
     <div className="overflow-hidden flex-1 flex items-center relative">
-      <FadeIn className="gap-4 flex flex-col max-w-screen-md mx-auto flex-1">
+      <div className="gap-4 flex flex-col max-w-screen-md mx-auto flex-1">
         <span>Hi all, I&apos;m</span>
         <h1 className="font-extrabold text-3xl md:text-6xl">Daniel Núñez</h1>
         <h2 className="text-lg mb-4">
@@ -25,7 +25,7 @@ function Page() {
             {`// fell free to access the code of this page in my github\nconst url = "${portfolioRepositoryLink}"`}
           </PrismLight>
         </Link>
-      </FadeIn>
+      </div>
       <Ascii className="absolute top-0 left-0 opacity-5 max-w-full max-h-full">
         {computerAscii}
       </Ascii>
