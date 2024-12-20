@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import { MenuItem } from "./Item";
 import { useCallback } from "react";
+import { menuData } from "@/constants/menu";
 
 function Menu() {
   const pathname = usePathname();
@@ -12,12 +13,15 @@ function Menu() {
 
   return (
     <nav className="h-full divide-x-1 flex max-h-16">
-      <MenuItem active={isRouteActive("/about")} href="/about">
-        /about.ts
-      </MenuItem>
-      <MenuItem active={isRouteActive("/projects")} href="/projects">
-        /projects.db
-      </MenuItem>
+      {menuData.map((item) => (
+        <MenuItem
+          key={item.href}
+          active={isRouteActive(item.href)}
+          href={item.href}
+        >
+          {item.label}
+        </MenuItem>
+      ))}
     </nav>
   );
 }

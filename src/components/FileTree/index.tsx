@@ -1,3 +1,4 @@
+"use client";
 import { fileTreeType } from "@/types/fileTree";
 import {
   Accordion,
@@ -9,6 +10,8 @@ import { ChevronDown } from "lucide-react";
 import { SiTypescript } from "react-icons/si";
 import { PiFolderSimpleDuotone } from "react-icons/pi";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/utils/styles";
 
 interface FileTreeProps {
   files: fileTreeType;
@@ -16,10 +19,13 @@ interface FileTreeProps {
 }
 
 function FileTree({ files, className }: FileTreeProps) {
+  const pathname = usePathname();
+
   return (
     <div className={className}>
       {files.map((item) => {
         const isFolder = item.type === "folder";
+        const isActive = !isFolder && pathname === item.href;
 
         if (isFolder)
           return (
@@ -45,7 +51,12 @@ function FileTree({ files, className }: FileTreeProps) {
           );
         return (
           <Link key={item.name} href={item.href}>
-            <TreeRowContainer key={item.name}>
+            <TreeRowContainer
+              key={item.name}
+              className={cn("hover:bg-editor-hover", {
+                "bg-editor-divider": isActive,
+              })}
+            >
               <RowIcon>
                 <SiTypescript size={14} />
               </RowIcon>
@@ -58,9 +69,22 @@ function FileTree({ files, className }: FileTreeProps) {
   );
 }
 
-function TreeRowContainer({ children }: { children: React.ReactNode }) {
+function TreeRowContainer({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="flex items-center px-8 relative text-lg">{children}</div>
+    <div
+      className={cn(
+        "flex items-center px-8 relative text-lg flex-1",
+        className
+      )}
+    >
+      {children}
+    </div>
   );
 }
 
