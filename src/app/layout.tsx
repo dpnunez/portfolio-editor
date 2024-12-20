@@ -8,6 +8,7 @@ import {
   EditorFooter,
   Logo,
   Menu,
+  ThemeProvider,
 } from "@/components";
 import { cn } from "@/utils/styles";
 
@@ -28,21 +29,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased",
           fontSans.variable
         )}
       >
-        <EditorContainer>
-          <header className="h-14 border-b border-editor-divider flex items-center">
-            <Logo />
-            <Menu />
-          </header>
-          <EditorContent>{children}</EditorContent>
-          <EditorFooter />
-        </EditorContainer>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <EditorContainer>
+            <header className="h-14 border-b border-editor-divider flex items-center">
+              <Logo />
+              <Menu />
+            </header>
+            <EditorContent>{children}</EditorContent>
+            <EditorFooter />
+          </EditorContainer>
+        </ThemeProvider>
       </body>
     </html>
   );
