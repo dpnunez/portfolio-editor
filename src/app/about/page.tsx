@@ -3,8 +3,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  FileTree,
   Sidebar,
 } from "@/components";
+import { aboutFileTree } from "@/constants/fileTrees";
 
 function Page() {
   return (
@@ -13,7 +15,9 @@ function Page() {
         <Accordion type="single" collapsible>
           <AccordionItem value="1">
             <AccordionTrigger>About</AccordionTrigger>
-            <AccordionContent>toDo: add file tree.</AccordionContent>
+            <AccordionContent>
+              <FileTree files={aboutFileTree} />
+            </AccordionContent>
           </AccordionItem>
         </Accordion>
       </Sidebar>
