@@ -24,5 +24,6 @@ body {
 }
 
 * {
+  font-family: "Fira Mono";
   box-sizing: border-box;
 }
