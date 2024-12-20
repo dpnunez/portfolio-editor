@@ -9,6 +9,7 @@ type fileType = {
   name: string;
   type: "file";
   icon?: string; // toDo: change to real icon type
+  href: string;
 };
 
 type fileTreeType = Array<folderType | fileType>;

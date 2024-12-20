@@ -5,6 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/Accordion";
+import { ChevronDown } from "lucide-react";
+import { SiTypescript } from "react-icons/si";
+import { PiFolderSimpleDuotone } from "react-icons/pi";
+import Link from "next/link";
 
 interface FileTreeProps {
   files: fileTreeType;
@@ -16,13 +20,22 @@ function FileTree({ files, className }: FileTreeProps) {
     <div className={className}>
       {files.map((item) => {
         const isFolder = item.type === "folder";
+
         if (isFolder)
           return (
             <Accordion key={item.name} type="single" collapsible>
               <AccordionItem value="1" className="border-b-0">
-                <AccordionTrigger className="[&>.indicator]:hidden">
-                  [folder]
-                  {item.name}
+                <AccordionTrigger className="[&>.indicator]:hidden [&[data-state=open]>*>.folder-indicator]:rotate-0">
+                  <TreeRowContainer>
+                    <ChevronDown
+                      size={16}
+                      className="folder-indicator transition-all -rotate-90 absolute left-0"
+                    />
+                    <RowIcon>
+                      <PiFolderSimpleDuotone size={14} />
+                    </RowIcon>
+                    {item.name}
+                  </TreeRowContainer>
                 </AccordionTrigger>
                 <AccordionContent className="pb-0">
                   <FileTree className="ml-4" files={item.children} />
@@ -30,10 +43,27 @@ function FileTree({ files, className }: FileTreeProps) {
               </AccordionItem>
             </Accordion>
           );
-        return <div key={item.name}>{item.name}</div>;
+        return (
+          <Link key={item.name} href={item.href}>
+            <TreeRowContainer key={item.name}>
+              <RowIcon>
+                <SiTypescript size={14} />
+              </RowIcon>
+              {item.name}
+            </TreeRowContainer>
+          </Link>
+        );
       })}
     </div>
   );
+}
+
+function TreeRowContainer({ children }: { children: React.ReactNode }) {
+  return <div className="flex items-center px-5 relative">{children}</div>;
+}
+
+function RowIcon({ children }: { children: React.ReactNode }) {
+  return <div className="w-6">{children}</div>;
 }
 
 export { FileTree };
