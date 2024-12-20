@@ -12,10 +12,8 @@ function Page() {
       <Sidebar>
         <Accordion type="single" collapsible>
           <AccordionItem value="1">
-            <AccordionTrigger>Is it accessible?</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
+            <AccordionTrigger>About</AccordionTrigger>
+            <AccordionContent>toDo: add file tree.</AccordionContent>
           </AccordionItem>
         </Accordion>
       </Sidebar>

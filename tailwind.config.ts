@@ -18,6 +18,7 @@ export default {
         "editor-divider": "var(--editor-divider)",
         "editor-text-primary": "var(--editor-text-primary)",
         "editor-text-secondary": "var(--editor-text-secondary)",
+        "editor-background-highlight": "var(--editor-background-highlight)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
