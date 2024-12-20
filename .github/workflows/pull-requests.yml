@@ -3,7 +3,6 @@ on:
   pull_request:
     branches:
       - main
-      - alpha
 jobs:
   - name: Checkout
     uses: actions/checkout@v4
