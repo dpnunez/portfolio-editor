@@ -8,3 +8,4 @@ export * from "./Accordion";
 export * from "./FileTree";
 export * from "./Checkbox";
 export * from "./ThemePicker";
+export * from "./DropdownMenu";

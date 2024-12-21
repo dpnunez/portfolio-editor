@@ -7,6 +7,7 @@ import {
   EditorFooter,
   Logo,
   Menu,
+  ThemePicker,
   ThemeProvider,
 } from "@/components";
 import { cn } from "@/utils/styles";
@@ -40,6 +41,9 @@ export default function RootLayout({
             <header className="h-12 border-b border-editor-divider flex items-center">
               <Logo />
               <Menu />
+              <div className="ml-auto h-full border-l border-editor-divider flex items-center  overflow-hidden rounded-tr-lg">
+                <ThemePicker />
+              </div>
             </header>
             <EditorContent>{children}</EditorContent>
             <EditorFooter />
