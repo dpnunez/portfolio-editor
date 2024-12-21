@@ -32,7 +32,7 @@ function Projects() {
       <Sidebar>
         <Accordion type="single" collapsible defaultValue="open">
           <AccordionItem value="open">
-            <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-divider">
+            <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
               File Explorer
             </AccordionTrigger>
             <AccordionContent className="py-4">

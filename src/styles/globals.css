@@ -6,7 +6,9 @@
   --editor-divider: #1e2d3d;
   --editor-text-primary: #fa7970;
   --editor-text-secondary: #77bdfb;
-  --editor-background-highlight: #1f1f1f;
+  --editor-background-highlight: #151516;
+  --editor-background-content: #000000;
+  --editor-background-controls: #09090b;
 }
 
 body {

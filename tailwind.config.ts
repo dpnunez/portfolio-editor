@@ -19,6 +19,8 @@ export default {
         "editor-text-primary": "var(--editor-text-primary)",
         "editor-text-secondary": "var(--editor-text-secondary)",
         "editor-background-highlight": "var(--editor-background-highlight)",
+        "editor-background-content": "var(--editor-background-content)",
+        "editor-background-controls": "var(--editor-background-controls)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

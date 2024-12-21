@@ -54,7 +54,7 @@ function FileTree({ files, className }: FileTreeProps) {
             <TreeRowContainer
               key={item.name}
               className={cn("hover:bg-editor-hover", {
-                "bg-editor-divider": isActive,
+                "bg-editor-background-highlight": isActive,
               })}
             >
               <TreeRowIcon>
@@ -79,7 +79,7 @@ function TreeRowContainer({
   return (
     <div
       className={cn(
-        "flex items-center px-8 relative text-lg flex-1",
+        "flex items-center px-8 relative text-lg flex-1 rounded-md mx-1 transition-all",
         className
       )}
     >

@@ -6,7 +6,7 @@ interface SidebarProps {
 
 function Sidebar({ children }: SidebarProps) {
   return (
-    <nav className="w-sidebar border-r border-editor-divider h-full">
+    <nav className="w-sidebar border-r border-editor-divider h-full bg-editor-background-controls">
       {children}
     </nav>
   );

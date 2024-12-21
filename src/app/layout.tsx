@@ -38,7 +38,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark">
           <EditorContainer>
-            <header className="h-14 border-b border-editor-divider flex items-center">
+            <header className="h-12 border-b border-editor-divider flex items-center">
               <Logo />
               <Menu />
             </header>

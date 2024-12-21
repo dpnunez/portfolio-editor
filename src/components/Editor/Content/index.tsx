@@ -5,7 +5,9 @@ interface EditorContentProps {
 }
 
 function EditorContent({ children }: EditorContentProps) {
-  return <div className="flex flex-1">{children}</div>;
+  return (
+    <div className="flex flex-1 bg-editor-background-content">{children}</div>
+  );
 }
 
 export { EditorContent };
