@@ -1,10 +1,13 @@
 "use client";
-import dynamic from "next/dynamic";
-
-const Projects = dynamic(() => import("./clientView"), {
-  ssr: false,
-});
+import { ProjectsProvider } from "@/context/ProjectsContext";
+import { ProjectsFilter } from "./filter";
+import { ProjectsList } from "./list";
 
 export default function Page() {
-  return <Projects />;
+  return (
+    <ProjectsProvider>
+      <ProjectsFilter />
+      <ProjectsList />
+    </ProjectsProvider>
+  );
 }
