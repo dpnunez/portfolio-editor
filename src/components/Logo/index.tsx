@@ -1,10 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ActiveIndicator } from "@/components";
 
 function Logo() {
+  const pathname = usePathname();
+  const active = pathname === "/";
+
   return (
     <Link
       href="/"
-      className="w-sidebar flex justify-center border-r border-editor-divider h-full items-center group"
+      className="w-sidebar relative flex justify-center border-r border-editor-divider h-full items-center group"
     >
       <h1 className="text-lg">
         <span className="text-editor-text-primary font-bold">whoami</span>
@@ -12,6 +19,7 @@ function Logo() {
           &nbsp;{"> "}dpnunez
         </span>
       </h1>
+      {active && <ActiveIndicator />}
     </Link>
   );
 }
