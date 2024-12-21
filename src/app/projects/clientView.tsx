@@ -6,10 +6,12 @@ import {
   AccordionItem,
   AccordionTrigger,
   Checkbox,
+  FadeIn,
   Sidebar,
   TreeRowContainer,
 } from "@/components";
 import { projectTags } from "@/constants/filters";
+import * as motion from "motion/react-client";
 import { useStateViaQueryParams } from "@/hooks";
 
 function Projects() {
@@ -33,14 +35,20 @@ function Projects() {
         <Accordion type="single" collapsible defaultValue="open">
           <AccordionItem value="open">
             <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
-              File Explorer
+              <FadeIn>aass</FadeIn>
             </AccordionTrigger>
             <AccordionContent className="py-4">
-              {projectTags.map((e) => {
+              {projectTags.map((e, i) => {
                 const isChecked = search.includes(e);
                 return (
-                  <label key={e} className="cursor-pointer">
-                    <TreeRowContainer key={e} className="items-center">
+                  <label className="cursor-pointer" key={e}>
+                    <TreeRowContainer
+                      key={e}
+                      className="items-center"
+                      transition={{
+                        delay: 0.15 * i,
+                      }}
+                    >
                       <div className="w-6 flex items-center">
                         <Checkbox
                           checked={isChecked}

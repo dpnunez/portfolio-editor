@@ -1,6 +1,7 @@
 import * as motion from "motion/react-client";
+import { ComponentProps } from "react";
 
-interface FadeInProps {
+interface FadeInProps extends ComponentProps<typeof motion.div> {
   children: React.ReactNode;
   className?: string;
 }

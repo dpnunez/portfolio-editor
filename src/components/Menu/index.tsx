@@ -1,22 +1,22 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { MenuItem } from "./Item";
 import { useCallback } from "react";
 import { menuData } from "@/constants/menu";
 
+function isRouteActive(href: string, pathname: string) {
+  return pathname.includes(href);
+}
+
 function Menu() {
   const pathname = usePathname();
-  const isRouteActive = useCallback(
-    (route: string) => pathname.includes(route),
-    [pathname]
-  );
 
   return (
     <nav className="h-full divide-x-1 flex max-h-16">
       {menuData.map((item) => (
         <MenuItem
-          key={item.href}
-          active={isRouteActive(item.href)}
+          key={item.label}
+          active={isRouteActive(item.href, pathname)}
           href={item.href}
         >
           {item.label}

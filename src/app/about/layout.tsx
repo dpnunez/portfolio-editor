@@ -4,6 +4,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  FadeIn,
   FileTree,
   Sidebar,
 } from "@/components";
@@ -20,7 +21,7 @@ export default function Layout({ children }: LayoutProps) {
         <Accordion type="single" collapsible defaultValue="open">
           <AccordionItem value="open">
             <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
-              File Explorer
+              <FadeIn>About</FadeIn>
             </AccordionTrigger>
             <AccordionContent className="py-4">
               <FileTree files={aboutFileTree} />
