@@ -29,3 +29,4 @@ const useStateViaQueryParams = <T extends string | string[]>(
 };
 
 export { useStateViaQueryParams };
+export default useStateViaQueryParams;
