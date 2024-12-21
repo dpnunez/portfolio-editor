@@ -11,7 +11,6 @@ import {
   TreeRowContainer,
 } from "@/components";
 import { projectTags } from "@/constants/filters";
-import * as motion from "motion/react-client";
 import { useStateViaQueryParams } from "@/hooks";
 
 function Projects() {
