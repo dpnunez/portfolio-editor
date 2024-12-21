@@ -1,7 +1,6 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { MenuItem } from "./Item";
-import { useCallback } from "react";
 import { menuData } from "@/constants/menu";
 
 function isRouteActive(href: string, pathname: string) {
