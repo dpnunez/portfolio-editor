@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  ReactNode,
-} from "react";
+import React, { createContext, useEffect, useRef, ReactNode } from "react";
 import { usePathname } from "next/navigation";
 
 const PreviousPathContext = createContext<string | null>(null);
@@ -26,14 +20,4 @@ function PreviousPathProvider({ children }: { children: ReactNode }) {
   );
 }
 
-function usePreviousPath() {
-  const context = useContext(PreviousPathContext);
-  if (!context) {
-    throw new Error(
-      "usePreviousPath must be used within a PreviousPathProvider"
-    );
-  }
-  return context;
-}
-
-export { usePreviousPath, PreviousPathProvider };
+export { PreviousPathProvider, PreviousPathContext };

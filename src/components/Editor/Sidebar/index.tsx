@@ -1,7 +1,7 @@
 "use client";
-import { ReactNode, useMemo } from "react";
+import { ReactNode, use, useMemo } from "react";
 import * as motion from "motion/react-client";
-import { usePreviousPath } from "@/context/PreviusPathContext";
+import { PreviousPathContext } from "@/context/PreviusPathContext";
 import { pageIdentifiersWidthSidebar } from "@/constants/animation";
 
 interface SidebarProps {
@@ -9,7 +9,7 @@ interface SidebarProps {
 }
 
 function Sidebar({ children }: SidebarProps) {
-  const previousPath = usePreviousPath();
+  const previousPath = use(PreviousPathContext);
   const previousPageHasSidebar = useMemo(() => {
     return !!pageIdentifiersWidthSidebar.find((i) => {
       return previousPath?.includes(i);
