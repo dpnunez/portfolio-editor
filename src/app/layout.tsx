@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Fira_Mono as FontSans } from "next/font/google";
 import "@/styles/globals.css";
-import "@/styles/prism/common.css";
 import {
   EditorContainer,
   EditorContent,
@@ -36,7 +35,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="github-dark">
           <EditorContainer>
             <header className="h-12 border-b border-editor-divider flex items-center">
               <Logo />

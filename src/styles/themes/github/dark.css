@@ -1,5 +1,6 @@
-* {
-  /* toDo: change it when add support to dark and light mode */
+@import url("./common.css");
+
+.github-dark {
   --color-fg-default: #c9d1d9;
   --color-bg-code-block: #161b22;
   --color-bg-inline-code-block: rgb(110 118 129 / 40%);
