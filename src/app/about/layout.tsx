@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
   FadeIn,
   FileTree,
+  MainContent,
   Sidebar,
 } from "@/components";
 import { aboutFileTree } from "@/constants/fileTrees";
@@ -29,7 +30,7 @@ export default function Layout({ children }: LayoutProps) {
           </AccordionItem>
         </Accordion>
       </Sidebar>
-      <main>{children}</main>
+      <MainContent>{children}</MainContent>
     </>
   );
 }
