@@ -21,6 +21,24 @@ export default {
         "editor-background-highlight": "var(--editor-background-highlight)",
         "editor-background-content": "var(--editor-background-content)",
         "editor-background-controls": "var(--editor-background-controls)",
+        tech: {
+          react: {
+            background: "#61dafb",
+            foreground: "#20232a",
+          },
+          node: {
+            background: "#68a063",
+            foreground: "#ffffff",
+          },
+          javascript: {
+            background: "#f7df1e",
+            foreground: "#000000",
+          },
+          typescript: {
+            background: "#3178c6",
+            foreground: "#ffffff",
+          },
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
@@ -49,7 +67,7 @@ export default {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
         },
-        border: "var(--border",
+        border: "var(--border)",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         chart: {

@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const useStateViaQueryParams = <T extends string | string[]>(
@@ -7,8 +7,9 @@ const useStateViaQueryParams = <T extends string | string[]>(
   defaultValue: T
 ): [T, Dispatch<SetStateAction<T>>] => {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [state, setState] = useState<T>(() => {
-    const value = new URLSearchParams(window.location.search).get(key);
+    const value = searchParams.get(key);
     if (Array.isArray(defaultValue)) {
       return (value ? value.split(",") : defaultValue) as T;
     }
