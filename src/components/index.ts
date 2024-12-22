@@ -11,3 +11,4 @@ export * from "./ThemePicker";
 export * from "./DropdownMenu";
 export * from "./ActiveIndicator";
 export * from "./PageTitle";
+export * from "./SqlHighlight";

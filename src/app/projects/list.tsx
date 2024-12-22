@@ -1,5 +1,5 @@
 "use client";
-import { FadeIn, MainContent } from "@/components";
+import { FadeIn, MainContent, SqlHighlight } from "@/components";
 import { ProjectsContext } from "@/context/ProjectsContext";
 import * as motion from "motion/react-client";
 import { AnimatePresence } from "motion/react";
@@ -139,10 +139,6 @@ function ProjectsList() {
       </MainContent>
     </FadeIn>
   );
-}
-
-function SqlHighlight({ children }: { children: string }) {
-  return <b className="font-bold text-editor-text-primary">{children}</b>;
 }
 
 export { ProjectsList };

@@ -12,6 +12,9 @@ export default {
       width: {
         sidebar: "20rem",
       },
+      spacing: {
+        sidebar: "20rem",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
