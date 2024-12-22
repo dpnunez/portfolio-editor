@@ -16,7 +16,7 @@ function FileViewer({
     <SyntaxHighlighter
       language={language}
       showLineNumbers
-      className={cn("!bg-transparent mx-2 my-4", className)}
+      className={cn("!bg-transparent", className)}
     >
       {code}
     </SyntaxHighlighter>
