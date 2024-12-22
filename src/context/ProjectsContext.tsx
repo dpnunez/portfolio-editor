@@ -1,11 +1,5 @@
 "use client";
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useMemo,
-  //   useState,
-} from "react";
+import { createContext, ReactNode, useCallback, useMemo } from "react";
 import { projectsData as projects } from "@/constants/projects";
 import { useStateViaQueryParams } from "@/hooks/useStateViaQueryParams";
 import { Project } from "@/types/projects";
