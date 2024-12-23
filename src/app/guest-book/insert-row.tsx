@@ -1,3 +1,4 @@
+"use client";
 import { signIn } from "@/auth";
 import { useSession } from "next-auth/react";
 
