@@ -12,3 +12,4 @@ export * from "./DropdownMenu";
 export * from "./ActiveIndicator";
 export * from "./PageTitle";
 export * from "./SqlHighlight";
+export * from "./Table";
