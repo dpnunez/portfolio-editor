@@ -16,6 +16,9 @@ function FadeIn({ children, ...props }: FadeInProps) {
       animate={{
         opacity: 1,
       }}
+      exit={{
+        opacity: 0,
+      }}
       {...props}
     >
       {children}

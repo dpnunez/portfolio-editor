@@ -1,7 +1,7 @@
 import { MainContent, PageTitle } from "@/components";
 import { GuestBookList } from "./list";
 
-function Page() {
+async function Page() {
   return (
     <MainContent className="flex-col items-center py-10">
       <div className="max-w-screen-xl w-full">
