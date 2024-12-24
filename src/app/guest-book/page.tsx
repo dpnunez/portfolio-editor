@@ -7,7 +7,7 @@ import { message } from "@/types/guest-book";
 async function Page() {
   const session = await auth();
   const bookData = await axios.get<message[]>(
-    "http://localhost:3000/api/guest-book"
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/guest-book"
   );
 
   const hasSent = Boolean(
