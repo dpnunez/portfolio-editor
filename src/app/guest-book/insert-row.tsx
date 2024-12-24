@@ -8,10 +8,14 @@ import { FaGithub } from "react-icons/fa6";
 import { IoMdMailUnread } from "react-icons/io";
 import axios from "axios";
 
-function InsertRow() {
+interface InsertRowProps {
+  hasSent: boolean;
+}
+
+function InsertRow({ hasSent }: InsertRowProps) {
   const [requestStatus, setRequestStatus] = useState<
     "idle" | "loading" | "success" | "error" | "sent"
-  >("idle");
+  >(hasSent ? "sent" : "idle");
   const { register, handleSubmit, reset } = useForm<{
     message: string;
   }>();

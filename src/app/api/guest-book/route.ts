@@ -40,4 +40,16 @@ const POST = auth(async function POST(req) {
   }
 });
 
-export { POST };
+async function GET() {
+  const messages = await prisma.guest_book.findMany({
+    select: {
+      id: true,
+      message: true,
+      created_at: true,
+    },
+  });
+
+  return NextResponse.json(messages);
+}
+
+export { POST, GET };
