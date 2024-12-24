@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { auth } from "@/auth";
-import { NextResponse } from "next/server";
 import prisma from "@/db/prisma";
 
 const POST = auth(async function POST(req) {
   if (!req.auth) {
-    return NextResponse.json(
+    return Response.json(
       {
         message: "unauthenticated",
       },
@@ -24,10 +24,10 @@ const POST = auth(async function POST(req) {
       },
     });
 
-    return NextResponse.json(response);
+    return Response.json(response);
   } catch {
     // TODO: handle already exists error and other errors
-    return NextResponse.json(
+    return Response.json(
       {
         message: "error",
       },
@@ -36,7 +36,9 @@ const POST = auth(async function POST(req) {
       }
     );
   }
-});
+}) as any;
+// TODO: any type is used because of the auth function not give support to nextjs 15 api routes yet.
+// Remove it when it is supported.
 
 async function GET() {
   const messages = await prisma.guest_book.findMany({
@@ -47,7 +49,7 @@ async function GET() {
     },
   });
 
-  return NextResponse.json(messages);
+  return Response.json(messages);
 }
 
 export { POST, GET };
