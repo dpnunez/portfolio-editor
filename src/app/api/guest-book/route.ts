@@ -1,7 +1,8 @@
 import { auth } from "@/auth";
 import { NextResponse } from "next/server";
+import prisma from "@/db/prisma";
 
-const POST = auth(function POST(req) {
+const POST = auth(async function POST(req) {
   if (!req.auth) {
     return NextResponse.json(
       {
@@ -12,10 +13,31 @@ const POST = auth(function POST(req) {
       }
     );
   }
+  const id = req.auth?.user.id as string;
+  const message = await new Response(req.body).json();
 
-  return NextResponse.json({
-    message: "authenticated",
-  });
+  try {
+    await prisma.guest_book.create({
+      data: {
+        message: message.message,
+        id,
+      },
+    });
+
+    return NextResponse.json({
+      message: "created",
+    });
+  } catch {
+    // TODO: handle already exists error and other errors
+    return NextResponse.json(
+      {
+        message: "error",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 });
 
 export { POST };
