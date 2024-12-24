@@ -7,12 +7,14 @@ import { useCallback, useMemo, useState } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { IoMdMailUnread } from "react-icons/io";
 import axios from "axios";
+import { message } from "@/types/guest-book";
 
 interface InsertRowProps {
   hasSent: boolean;
+  pushOnList: (message: message) => void;
 }
 
-function InsertRow({ hasSent }: InsertRowProps) {
+function InsertRow({ hasSent, pushOnList }: InsertRowProps) {
   const [requestStatus, setRequestStatus] = useState<
     "idle" | "loading" | "success" | "error" | "sent"
   >(hasSent ? "sent" : "idle");
@@ -85,7 +87,9 @@ function InsertRow({ hasSent }: InsertRowProps) {
   const onSubmit = handleSubmit(async (e) => {
     try {
       setRequestStatus("loading");
-      await axios.post("/api/guest-book", e);
+      const response = await axios.post("/api/guest-book", e);
+
+      pushOnList(response.data);
 
       setRequestStatus("success");
       reset();
@@ -104,8 +108,13 @@ function InsertRow({ hasSent }: InsertRowProps) {
   return (
     <form onSubmit={onSubmit} className="flex gap-4">
       <Input
+        disabled={requestStatus === "sent"}
         className="flex-1"
-        placeholder="message"
+        placeholder={
+          requestStatus === "sent"
+            ? "You had already signed this book!"
+            : "message"
+        }
         {...register("message", {
           required: true,
         })}

@@ -17,16 +17,14 @@ const POST = auth(async function POST(req) {
   const message = await new Response(req.body).json();
 
   try {
-    await prisma.guest_book.create({
+    const response = await prisma.guest_book.create({
       data: {
         message: message.message,
         id,
       },
     });
 
-    return NextResponse.json({
-      message: "created",
-    });
+    return NextResponse.json(response);
   } catch {
     // TODO: handle already exists error and other errors
     return NextResponse.json(
