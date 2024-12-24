@@ -21,7 +21,9 @@ function InsertRow({ hasSent, pushOnList }: InsertRowProps) {
   const { register, handleSubmit, reset } = useForm<{
     message: string;
   }>();
-  const { status } = useSession();
+  const { status, data } = useSession();
+
+  console.log(data);
 
   const buttonStatus = useMemo(() => {
     if (requestStatus === "loading") return "loading";

@@ -13,7 +13,7 @@ const POST = auth(async function POST(req) {
       }
     );
   }
-  const id = req.auth?.user.id as string;
+  const id = req.auth?.user.username as string;
   const message = await new Response(req.body).json();
 
   try {

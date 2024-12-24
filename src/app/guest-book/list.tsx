@@ -47,7 +47,7 @@ function GuestBookList({ hasSent, initialBookData }: GuestBookListProps) {
         <TableBody>
           {bookData.map((message) => (
             <TableRow key={message.id}>
-              <TableCell>{message.id}</TableCell>
+              <TableCell>@{message.id}</TableCell>
               <TableCell>{message.message}</TableCell>
               <TableCell>{message.created_at}</TableCell>
             </TableRow>
