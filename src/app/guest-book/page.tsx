@@ -11,7 +11,7 @@ async function Page() {
   );
 
   const hasSent = Boolean(
-    session &&
+    session?.user &&
       bookData.data.some((message) => message.id === session.user.username)
   );
 
