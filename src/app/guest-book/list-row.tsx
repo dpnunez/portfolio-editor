@@ -6,6 +6,7 @@ import { message } from "@/types/guest-book";
 import { useSession } from "next-auth/react";
 import { FaTrash } from "react-icons/fa6";
 import { PanInfo } from "motion/react";
+import axios from "axios";
 
 interface BookEntryProps extends message {
   index: number;
@@ -44,6 +45,11 @@ function BookEntry({
 
   const onDelete = () => {
     handleDelete(id);
+    try {
+      axios.delete(`/api/guest-book/${id}`);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -93,6 +99,7 @@ function BookEntry({
         {message}
       </TableCell>
       <TableCell
+        className="text-right"
         exit={{
           opacity: 0,
           height: 0,

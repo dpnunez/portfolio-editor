@@ -3,21 +3,24 @@ import { FadeIn, Input } from "@/components";
 import { AnimatePresence, motion } from "motion/react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { IoMdMailUnread } from "react-icons/io";
 import axios from "axios";
 import { message } from "@/types/guest-book";
+import { requestStatusType } from "./list";
 
 interface InsertRowProps {
-  hasSent: boolean;
   pushOnList: (message: message) => void;
+  requestStatus: requestStatusType;
+  handleChangeRequestStatus: (status: requestStatusType) => void;
 }
 
-function InsertRow({ hasSent, pushOnList }: InsertRowProps) {
-  const [requestStatus, setRequestStatus] = useState<
-    "idle" | "loading" | "success" | "error" | "sent"
-  >(hasSent ? "sent" : "idle");
+function InsertRow({
+  pushOnList,
+  requestStatus,
+  handleChangeRequestStatus,
+}: InsertRowProps) {
   const { register, handleSubmit, reset } = useForm<{
     message: string;
   }>();
@@ -86,20 +89,20 @@ function InsertRow({ hasSent, pushOnList }: InsertRowProps) {
 
   const onSubmit = handleSubmit(async (e) => {
     try {
-      setRequestStatus("loading");
+      handleChangeRequestStatus("loading");
       const response = await axios.post("/api/guest-book", e);
 
       pushOnList(response.data);
 
-      setRequestStatus("success");
+      handleChangeRequestStatus("success");
       reset();
       setTimeout(() => {
-        setRequestStatus("sent");
+        handleChangeRequestStatus("sent");
       }, 2000);
     } catch (err) {
-      setRequestStatus("error");
+      handleChangeRequestStatus("error");
       setTimeout(() => {
-        setRequestStatus("idle");
+        handleChangeRequestStatus("idle");
       }, 2000);
       console.log(err);
     }

@@ -19,8 +19,18 @@ interface GuestBookListProps {
   initialBookData: message[];
 }
 
+export type requestStatusType =
+  | "idle"
+  | "loading"
+  | "success"
+  | "error"
+  | "sent";
+
 function GuestBookList({ hasSent, initialBookData }: GuestBookListProps) {
   const [bookData, setBookData] = useState<message[]>(initialBookData);
+  const [requestStatus, setRequestStatus] = useState<requestStatusType>(
+    hasSent ? "sent" : "idle"
+  );
 
   const addMessageOnList = (message: message) => {
     setBookData([message, ...bookData]);
@@ -28,12 +38,17 @@ function GuestBookList({ hasSent, initialBookData }: GuestBookListProps) {
 
   const deleteMessage = (id: string) => {
     setBookData(bookData.filter((message) => message.id !== id));
+    setRequestStatus("idle");
   };
 
   return (
     <div>
       <div className="mt-8 flex-col">
-        <InsertRow pushOnList={addMessageOnList} hasSent={hasSent} />
+        <InsertRow
+          handleChangeRequestStatus={setRequestStatus}
+          requestStatus={requestStatus}
+          pushOnList={addMessageOnList}
+        />
         <div className="my-8">
           <SqlHighlight>SELECT</SqlHighlight>{" "}
           <em>username, message, created_at</em>{" "}
