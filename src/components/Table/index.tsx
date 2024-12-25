@@ -1,4 +1,5 @@
 import { cn } from "@/utils/styles";
+import * as motion from "motion/react-client";
 import * as React from "react";
 
 const Table = React.forwardRef<
@@ -52,12 +53,12 @@ TableFooter.displayName = "TableFooter";
 
 const TableRow = React.forwardRef<
   HTMLTableRowElement,
-  React.HTMLAttributes<HTMLTableRowElement>
+  React.ComponentProps<typeof motion.tr>
 >(({ className, ...props }, ref) => (
-  <tr
+  <motion.tr
     ref={ref}
     className={cn(
-      "border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
+      "border-b border-editor-divider transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted",
       className
     )}
     {...props}
@@ -82,9 +83,9 @@ TableHead.displayName = "TableHead";
 
 const TableCell = React.forwardRef<
   HTMLTableCellElement,
-  React.TdHTMLAttributes<HTMLTableCellElement>
+  React.ComponentProps<typeof motion.td>
 >(({ className, ...props }, ref) => (
-  <td
+  <motion.td
     ref={ref}
     className={cn("p-4 align-middle [&:has([role=checkbox])]:pr-0", className)}
     {...props}

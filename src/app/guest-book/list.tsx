@@ -4,7 +4,6 @@ import {
   SqlHighlight,
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -12,6 +11,8 @@ import {
 import { InsertRow } from "./insert-row";
 import { useState } from "react";
 import { message } from "@/types/guest-book";
+import { AnimatePresence } from "motion/react";
+import { BookEntry } from "./list-row";
 
 interface GuestBookListProps {
   hasSent: boolean;
@@ -25,33 +26,40 @@ function GuestBookList({ hasSent, initialBookData }: GuestBookListProps) {
     setBookData([message, ...bookData]);
   };
 
+  const deleteMessage = (id: string) => {
+    setBookData(bookData.filter((message) => message.id !== id));
+  };
+
   return (
     <div>
       <div className="mt-8 flex-col">
         <InsertRow pushOnList={addMessageOnList} hasSent={hasSent} />
-        <span>
+        <div className="my-8">
           <SqlHighlight>SELECT</SqlHighlight>{" "}
           <em>username, message, created_at</em>{" "}
           <SqlHighlight>FROM</SqlHighlight> <em>guestbook</em>;
-        </span>
+        </div>
       </div>
 
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>Username</TableHead>
-            <TableHead>Message</TableHead>
-            <TableHead>Created At</TableHead>
+            <TableHead>username</TableHead>
+            <TableHead>message</TableHead>
+            <TableHead className="text-right">created_at</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {bookData.map((message) => (
-            <TableRow key={message.id}>
-              <TableCell>@{message.id}</TableCell>
-              <TableCell>{message.message}</TableCell>
-              <TableCell>{message.created_at}</TableCell>
-            </TableRow>
-          ))}
+          <AnimatePresence>
+            {bookData.map((message, index) => (
+              <BookEntry
+                key={message.id}
+                handleDelete={deleteMessage}
+                {...message}
+                index={index}
+              />
+            ))}
+          </AnimatePresence>
         </TableBody>
       </Table>
     </div>
