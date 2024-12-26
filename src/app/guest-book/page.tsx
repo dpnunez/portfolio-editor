@@ -17,16 +17,14 @@ async function Page() {
 
   return (
     <FadeIn>
-      <MainContent className="flex-col items-center py-10">
-        <div className="max-w-screen-xl w-full">
-          <PageTitle>Guest Book</PageTitle>
+      <MainContent className="py-10 max-w-screen-xl w-full mx-auto">
+        <PageTitle>Guest Book</PageTitle>
 
-          <h2 className="opacity-30">
-            {"//"} This is a guest book. Please leave a message below.
-          </h2>
+        <h2 className="opacity-30">
+          {"//"} This is a guest book. Please leave a message below.
+        </h2>
 
-          <GuestBookList hasSent={hasSent} initialBookData={bookData.data} />
-        </div>
+        <GuestBookList hasSent={hasSent} initialBookData={bookData.data} />
       </MainContent>
     </FadeIn>
   );
