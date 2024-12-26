@@ -1,3 +1,4 @@
+import prisma from "@/db/prisma";
 import { contactSchema } from "@/validations";
 import { NextResponse } from "next/server";
 
@@ -17,9 +18,24 @@ const POST = async (req: Request) => {
     );
   }
 
-  return NextResponse.json({
-    message: "success",
-  });
+  try {
+    await prisma.contact.create({
+      data: bodyParsed.data,
+    });
+
+    return NextResponse.json({
+      message: "success",
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        message: "error",
+      },
+      {
+        status: 500,
+      }
+    );
+  }
 };
 
 export { POST };
