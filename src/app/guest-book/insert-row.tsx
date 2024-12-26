@@ -1,6 +1,6 @@
 "use client";
-import { FadeIn, Input } from "@/components";
-import { AnimatePresence, motion } from "motion/react";
+import { FormButton, Input } from "@/components";
+import { motion } from "motion/react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { Dispatch, useCallback, useMemo } from "react";
@@ -40,52 +40,33 @@ function InsertRow({
   }, []);
 
   const buttonProps = useMemo(() => {
-    if (buttonStatus === "unauthenticated") {
-      return {
-        type: "button",
-        onClick: handleSignIn,
-      } as const;
-    }
-
-    if (buttonStatus === "authenticated") {
-      return {
-        type: "submit",
-      } as const;
-    }
-
-    if (buttonStatus === "success") {
-      return {
-        animate: {
-          backgroundColor: "var(--color-green)",
-        },
-        type: "button",
-      } as const;
-    }
-
-    if (buttonStatus === "sent") {
-      return {
-        type: "submit",
-        disabled: true,
-      } as const;
-    }
-
-    if (buttonStatus === "loading") {
-      return {
-        type: "submit",
-        disabled: true,
-      } as const;
-    }
-
-    if (buttonStatus === "error") {
-      return {
-        type: "submit",
-        animate: {
-          backgroundColor: "var(--color-red)",
-        },
-        disabled: true,
-      } as const;
+    switch (buttonStatus) {
+      case "unauthenticated":
+        return {
+          type: "button",
+          onClick: handleSignIn,
+        } as const;
+      case "authenticated":
+      case "success":
+      case "sent":
+      case "loading":
+      case "error":
+      default:
+        return {
+          type: "submit",
+        } as const;
     }
   }, [buttonStatus, handleSignIn]);
+
+  const formButtonStatus = useMemo(() => {
+    switch (buttonStatus) {
+      case "unauthenticated":
+      case "authenticated":
+        return "idle";
+      default:
+        return buttonStatus;
+    }
+  }, [buttonStatus]);
 
   const onSubmit = handleSubmit(async (e) => {
     try {
@@ -112,51 +93,44 @@ function InsertRow({
   });
 
   return (
-    <form onSubmit={onSubmit} className="flex gap-4">
-      <Input
-        disabled={requestStatus === "sent"}
-        className="flex-1"
-        placeholder={
-          requestStatus === "sent"
-            ? "You had already signed this book!"
-            : "message"
-        }
-        {...register("message", {
-          required: true,
-        })}
-      />
-      <motion.button
-        className="w-[200px] bg-foreground/10 rounded-md flex items-center justify-center"
+    <motion.form layout onSubmit={onSubmit} className="flex gap-4">
+      <motion.div layout className="flex-1">
+        <Input
+          disabled={requestStatus === "sent"}
+          placeholder={
+            requestStatus === "sent"
+              ? "You had already signed this book!"
+              : "message"
+          }
+          {...register("message", {
+            required: true,
+          })}
+        />
+      </motion.div>
+      <FormButton
         {...buttonProps}
-      >
-        <AnimatePresence mode="wait">
-          {buttonStatus === "loading" && (
-            <FadeIn className="flex items-center">loading</FadeIn>
-          )}
-          {buttonStatus === "unauthenticated" && (
-            <FadeIn className="flex items-center gap-2">
-              <FaGithub />
-              GitHub SignIn
-            </FadeIn>
-          )}
-          {buttonStatus === "authenticated" && (
-            <FadeIn className="flex items-center gap-2">
+        className="w-48"
+        type={buttonStatus === "unauthenticated" ? "button" : "submit"}
+        ErrorSlot="Error"
+        IdleSlot={
+          buttonStatus === "authenticated" ? (
+            <>
               <IoMdMailUnread />
               Send Message
-            </FadeIn>
-          )}
-          {buttonStatus === "success" && (
-            <FadeIn className="flex items-center">Message Sent</FadeIn>
-          )}
-          {buttonStatus === "sent" && (
-            <FadeIn className="flex items-center">Tks!</FadeIn>
-          )}
-          {buttonStatus === "error" && (
-            <FadeIn className="flex items-center">Error</FadeIn>
-          )}
-        </AnimatePresence>
-      </motion.button>
-    </form>
+            </>
+          ) : (
+            <>
+              <FaGithub />
+              GitHub SignIn
+            </>
+          )
+        }
+        LoadingSlot="loading"
+        SentSlot="Tks!"
+        SuccessSlot="Message Sent"
+        status={formButtonStatus}
+      />
+    </motion.form>
   );
 }
 

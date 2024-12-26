@@ -19,3 +19,4 @@ export * from "./PageSubtitle";
 export * from "./Label";
 export * from "./Form";
 export * from "./Textarea";
+export * from "./FormButton";

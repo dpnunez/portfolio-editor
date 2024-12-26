@@ -3,6 +3,7 @@
 import {
   Button,
   Form,
+  FormButton,
   FormControl,
   FormField,
   FormItem,
@@ -17,8 +18,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ContactRequestPreview } from "./preview";
 import axios from "axios";
+import { formStatus } from "@/types/form";
+import { useState } from "react";
 
 function ContactForm() {
+  const [status, setStatus] = useState<formStatus>("idle");
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -30,10 +34,20 @@ function ContactForm() {
 
   const onSubmit = form.handleSubmit(async (data) => {
     try {
+      setStatus("loading");
       await axios.post("/api/contact", data);
-    } catch (error) {
+      setStatus("success");
+
+      setTimeout(() => {
+        setStatus("sent");
+        // form.reset();
+      }, 2000);
+    } catch {
       // Press F to my form (and send a sentry report)
-      console.log(error);
+      setStatus("error");
+      setTimeout(() => {
+        setStatus("idle");
+      }, 5000);
     }
   });
 
@@ -88,6 +102,14 @@ function ContactForm() {
           />
 
           <Button type="submit">Submit</Button>
+          <FormButton
+            ErrorSlot="error"
+            IdleSlot="$submit"
+            LoadingSlot="loading"
+            SuccessSlot="message sent!"
+            SentSlot="Thanks for reaching out!"
+            status={status}
+          ></FormButton>
         </form>
         <ContactRequestPreview className="flex-1" />
       </Form>
