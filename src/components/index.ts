@@ -15,3 +15,6 @@ export * from "./SqlHighlight";
 export * from "./Table";
 export * from "./Button";
 export * from "./Input";
+export * from "./PageSubtitle";
+export * from "./Label";
+export * from "./Form";
