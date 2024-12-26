@@ -3,7 +3,7 @@ import { FadeIn, Input } from "@/components";
 import { AnimatePresence, motion } from "motion/react";
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import { useCallback, useMemo } from "react";
+import { Dispatch, useCallback, useMemo } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { IoMdMailUnread } from "react-icons/io";
 import axios from "axios";
@@ -13,7 +13,7 @@ import { requestStatusType } from "./list";
 interface InsertRowProps {
   pushOnList: (message: message) => void;
   requestStatus: requestStatusType;
-  handleChangeRequestStatus: (status: requestStatusType) => void;
+  handleChangeRequestStatus: Dispatch<React.SetStateAction<requestStatusType>>;
 }
 
 function InsertRow({
@@ -97,7 +97,10 @@ function InsertRow({
       handleChangeRequestStatus("success");
       reset();
       setTimeout(() => {
-        if (buttonStatus === "success") handleChangeRequestStatus("sent");
+        handleChangeRequestStatus((current) => {
+          if (current === "success") return "sent";
+          return current;
+        });
       }, 2000);
     } catch (err) {
       handleChangeRequestStatus("error");
