@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormMessage,
   Input,
+  Textarea,
 } from "@/components";
 import { contactSchema } from "@/validations";
 import { useForm } from "react-hook-form";
@@ -64,11 +65,7 @@ function ContactForm() {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="Your message here"
-                    {...field}
-                  />
+                  <Textarea placeholder="Your message here" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
