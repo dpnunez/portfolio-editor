@@ -16,6 +16,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ContactRequestPreview } from "./preview";
+import axios from "axios";
 
 function ContactForm() {
   const form = useForm<z.infer<typeof contactSchema>>({
@@ -27,13 +28,19 @@ function ContactForm() {
     },
   });
 
+  const onSubmit = form.handleSubmit(async (data) => {
+    try {
+      await axios.post("/api/contact", data);
+    } catch (error) {
+      // Press F to my form (and send a sentry report)
+      console.log(error);
+    }
+  });
+
   return (
     <div className="flex flex-1 items-center px-1 gap-8 overflow-hidden">
       <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(() => console.log("todo"))}
-          className="flex-1"
-        >
+        <form onSubmit={onSubmit} className="flex-1">
           <FormField
             control={form.control}
             name="name"
