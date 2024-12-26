@@ -15,6 +15,7 @@ import { contactSchema } from "@/validations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { ContactRequestPreview } from "./preview";
 
 function ContactForm() {
   const form = useForm<z.infer<typeof contactSchema>>({
@@ -74,6 +75,7 @@ function ContactForm() {
 
           <Button type="submit">Submit</Button>
         </form>
+        <ContactRequestPreview />
       </Form>
     </div>
   );
