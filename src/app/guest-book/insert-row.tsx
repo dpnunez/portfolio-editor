@@ -97,7 +97,7 @@ function InsertRow({
       handleChangeRequestStatus("success");
       reset();
       setTimeout(() => {
-        handleChangeRequestStatus("sent");
+        if (buttonStatus === "success") handleChangeRequestStatus("sent");
       }, 2000);
     } catch (err) {
       handleChangeRequestStatus("error");
