@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Button,
   Form,
   FormButton,
   FormControl,
@@ -40,7 +39,7 @@ function ContactForm() {
 
       setTimeout(() => {
         setStatus("sent");
-        // form.reset();
+        form.reset();
       }, 2000);
     } catch {
       // Press F to my form (and send a sentry report)
@@ -54,7 +53,7 @@ function ContactForm() {
   return (
     <div className="flex flex-1 items-center px-1 gap-8 overflow-hidden">
       <Form {...form}>
-        <form onSubmit={onSubmit} className="flex-1">
+        <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-5">
           <FormField
             control={form.control}
             name="name"
@@ -100,8 +99,6 @@ function ContactForm() {
               </FormItem>
             )}
           />
-
-          <Button type="submit">Submit</Button>
           <FormButton
             ErrorSlot="error"
             IdleSlot="$submit"
@@ -109,7 +106,7 @@ function ContactForm() {
             SuccessSlot="message sent!"
             SentSlot="Thanks for reaching out!"
             status={status}
-          ></FormButton>
+          />
         </form>
         <ContactRequestPreview className="flex-1" />
       </Form>
