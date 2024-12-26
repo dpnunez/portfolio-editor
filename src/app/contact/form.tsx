@@ -28,9 +28,12 @@ function ContactForm() {
   });
 
   return (
-    <div>
+    <div className="flex flex-1 items-center px-1 gap-8 overflow-hidden">
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(() => console.log("todo"))}>
+        <form
+          onSubmit={form.handleSubmit(() => console.log("todo"))}
+          className="flex-1"
+        >
           <FormField
             control={form.control}
             name="name"
@@ -66,7 +69,11 @@ function ContactForm() {
               <FormItem>
                 <FormLabel>Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="Your message here" {...field} />
+                  <Textarea
+                    rows={12}
+                    placeholder="Your message here"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,7 +82,7 @@ function ContactForm() {
 
           <Button type="submit">Submit</Button>
         </form>
-        <ContactRequestPreview />
+        <ContactRequestPreview className="flex-1" />
       </Form>
     </div>
   );
