@@ -47,7 +47,7 @@ function FormButton({
   return (
     <Button asChild variant={buttonVariant} disabled={isDisabled} {...props}>
       <motion.button layout="size" className="overflow-hidden">
-        <ContentAnimationContainer key={status}>
+        <ContentAnimationContainer motionKey={status}>
           {content}
         </ContentAnimationContainer>
       </motion.button>
@@ -57,11 +57,11 @@ function FormButton({
 
 interface ContentAnimationContainerProps {
   children: ReactNode;
-  key: string;
+  motionKey: string;
 }
 function ContentAnimationContainer({
   children,
-  key,
+  motionKey,
 }: ContentAnimationContainerProps) {
   return (
     <motion.div
@@ -74,7 +74,7 @@ function ContentAnimationContainer({
         y: 0,
         opacity: 1,
       }}
-      key={key}
+      key={motionKey}
       layout
     >
       {children}
