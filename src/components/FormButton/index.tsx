@@ -46,7 +46,7 @@ function FormButton({
 
   return (
     <Button asChild variant={buttonVariant} disabled={isDisabled} {...props}>
-      <motion.button layout="size" className="overflow-hidden">
+      <motion.button layout className="overflow-hidden">
         <ContentAnimationContainer motionKey={status}>
           {content}
         </ContentAnimationContainer>
