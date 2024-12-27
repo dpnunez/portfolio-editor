@@ -3,7 +3,7 @@ import { menuItem } from "@/types/menu";
 const menuData: menuItem[] = [
   {
     label: "/about",
-    href: "/about",
+    href: "/about/me",
   },
   {
     label: "/projects.db",
