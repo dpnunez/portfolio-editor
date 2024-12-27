@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CaptchaStatus,
   Form,
   FormButton,
   FormControl,
@@ -104,16 +105,17 @@ function ContactForm() {
               </FormItem>
             )}
           />
-          <FormButton
-            ErrorSlot="error"
-            IdleSlot="$submit"
-            LoadingSlot="loading"
-            SuccessSlot="message sent!"
-            SentSlot="Thanks for reaching out!"
-            status={formStatus}
-          />
-          <div id="captcha" className="w-full">
-            {challengeStatus}
+          <div id="captcha" className="hidden" />
+          <div className="flex items-center justify-between">
+            <CaptchaStatus status={challengeStatus} />
+            <FormButton
+              ErrorSlot="error"
+              IdleSlot="$submit"
+              LoadingSlot="loading"
+              SuccessSlot="message sent!"
+              SentSlot="Thanks for reaching out!"
+              status={formStatus}
+            />
           </div>
         </form>
         <ContactRequestPreview className="flex-1" />

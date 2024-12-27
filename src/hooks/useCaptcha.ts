@@ -1,11 +1,11 @@
 "use client";
+import { captchaStatus } from "@/types/captcha";
 import { useScript } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 
 const useCaptcha = (containerId: string) => {
-  const [challengeStatus, setChallengeStatus] = useState<
-    "loading" | "success" | "error" | "expired"
-  >("loading");
+  const [challengeStatus, setChallengeStatus] =
+    useState<captchaStatus>("loading");
   const [challengeToken, setChallengeToken] = useState<string | null>(null);
 
   useScript(
