@@ -11,7 +11,7 @@ function Menu() {
   const pathname = usePathname();
 
   return (
-    <nav className="h-full divide-x-1 flex max-h-16">
+    <nav className="hidden md:flex h-full divide-x-1 max-h-16">
       {menuData.map((item) => (
         <MenuItem
           key={item.label}

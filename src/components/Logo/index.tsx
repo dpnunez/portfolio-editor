@@ -11,7 +11,7 @@ function Logo() {
   return (
     <Link
       href="/"
-      className="w-sidebar relative flex justify-center border-r border-editor-divider h-full items-center group"
+      className="w-full md:w-sidebar relative flex justify-center border-r border-editor-divider h-full items-center group"
     >
       <h1 className="text-lg">
         <span className="text-editor-text-primary font-bold">whoami</span>

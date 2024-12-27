@@ -31,7 +31,7 @@ function Sidebar({ children }: SidebarProps) {
         ease: [0.87, 0, 0.13, 1],
         duration: 0.5,
       }}
-      className="w-sidebar border-r border-editor-divider h-full bg-editor-background-controls"
+      className="hidden md:block w-sidebar border-r border-editor-divider h-full bg-editor-background-controls"
     >
       {children}
     </motion.nav>

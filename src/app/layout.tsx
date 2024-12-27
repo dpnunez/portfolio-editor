@@ -43,7 +43,7 @@ export default function RootLayout({
               <header className="h-12 border-b border-editor-divider flex items-center">
                 <Logo />
                 <Menu />
-                <div className="ml-auto h-full border-l border-editor-divider flex items-center  overflow-hidden">
+                <div className="hidden md:flex ml-auto h-full border-l border-editor-divider items-center  overflow-hidden">
                   <ThemePicker />
                 </div>
               </header>
