@@ -17,12 +17,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { ContactRequestPreview } from "./preview";
 import axios from "axios";
-import { formStatus } from "@/types/form";
+import { formStatus as formStatusType } from "@/types/form";
 import { useState } from "react";
 import { useCaptcha } from "@/hooks/useCaptcha";
 
 function ContactForm() {
-  const [status, setStatus] = useState<formStatus>("idle");
+  const [formStatus, setFormStatus] = useState<formStatusType>("idle");
   const challengeStatus = useCaptcha("#captcha");
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -35,19 +35,19 @@ function ContactForm() {
 
   const onSubmit = form.handleSubmit(async (data) => {
     try {
-      setStatus("loading");
+      setFormStatus("loading");
       await axios.post("/api/contact", data);
-      setStatus("success");
+      setFormStatus("success");
 
       setTimeout(() => {
-        setStatus("sent");
+        setFormStatus("sent");
         form.reset();
       }, 2000);
     } catch {
       // Press F to my form (and send a sentry report)
-      setStatus("error");
+      setFormStatus("error");
       setTimeout(() => {
-        setStatus("idle");
+        setFormStatus("idle");
       }, 5000);
     }
   });
@@ -107,7 +107,7 @@ function ContactForm() {
             LoadingSlot="loading"
             SuccessSlot="message sent!"
             SentSlot="Thanks for reaching out!"
-            status={status}
+            status={formStatus}
           />
           <div id="captcha" className="w-full">
             {challengeStatus}
