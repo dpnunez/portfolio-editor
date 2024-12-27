@@ -19,9 +19,11 @@ import { ContactRequestPreview } from "./preview";
 import axios from "axios";
 import { formStatus } from "@/types/form";
 import { useState } from "react";
+import { useCaptcha } from "@/hooks/useCaptcha";
 
 function ContactForm() {
   const [status, setStatus] = useState<formStatus>("idle");
+  const challengeStatus = useCaptcha("#captcha");
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -107,6 +109,9 @@ function ContactForm() {
             SentSlot="Thanks for reaching out!"
             status={status}
           />
+          <div id="captcha" className="w-full">
+            {challengeStatus}
+          </div>
         </form>
         <ContactRequestPreview className="flex-1" />
       </Form>
