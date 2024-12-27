@@ -4,13 +4,13 @@ type folderType = {
   name: string;
   type: "folder";
   children: Array<folderType | fileType>;
-  icon?: string; // toDo: change to real icon type
+  icon?: string;
 };
 
 type fileType = {
   name: string;
   type: "file";
-  icon?: ReactNode; // toDo: change to real icon type
+  icon?: ReactNode;
   href: string;
 };
 
