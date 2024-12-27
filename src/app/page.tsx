@@ -26,7 +26,7 @@ function Page() {
           </PrismLight>
         </Link>
       </div>
-      <Ascii className="absolute top-0 left-0 opacity-5 max-w-full max-h-full">
+      <Ascii className="absolute top-0 left-0 opacity-10 max-w-full max-h-full">
         {computerAscii}
       </Ascii>
     </FadeIn>
