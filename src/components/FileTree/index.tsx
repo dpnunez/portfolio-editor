@@ -73,7 +73,7 @@ function FileTree({ files, className }: FileTreeProps) {
               })}
             >
               <TreeRowIcon>
-                <SiTypescript size={14} />
+                {item.icon ?? <SiTypescript size={14} />}
               </TreeRowIcon>
               {item.name}
             </TreeRowContainer>

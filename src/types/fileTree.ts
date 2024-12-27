@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 type folderType = {
   name: string;
   type: "folder";
@@ -8,7 +10,7 @@ type folderType = {
 type fileType = {
   name: string;
   type: "file";
-  icon?: string; // toDo: change to real icon type
+  icon?: ReactNode; // toDo: change to real icon type
   href: string;
 };
 
