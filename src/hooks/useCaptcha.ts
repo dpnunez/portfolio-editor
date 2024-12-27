@@ -6,6 +6,7 @@ const useCaptcha = (containerId: string) => {
   const [challengeStatus, setChallengeStatus] = useState<
     "loading" | "success" | "error" | "expired"
   >("loading");
+  const [challengeToken, setChallengeToken] = useState<string | null>(null);
 
   useScript(
     "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
@@ -17,6 +18,7 @@ const useCaptcha = (containerId: string) => {
         sitekey: process.env.NEXT_PUBLIC_CLIENT_TURNSTILE_KEY!,
         callback: function (token: string) {
           setChallengeStatus("success");
+          setChallengeToken(token);
           console.log(`Challenge Success ${token}`);
         },
         "error-callback": () => {
@@ -31,6 +33,6 @@ const useCaptcha = (containerId: string) => {
     };
   }, [containerId]);
 
-  return challengeStatus;
+  return { challengeStatus, challengeToken };
 };
 export { useCaptcha };

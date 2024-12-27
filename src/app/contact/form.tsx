@@ -23,7 +23,7 @@ import { useCaptcha } from "@/hooks/useCaptcha";
 
 function ContactForm() {
   const [formStatus, setFormStatus] = useState<formStatusType>("idle");
-  const challengeStatus = useCaptcha("#captcha");
+  const { challengeStatus, challengeToken } = useCaptcha("#captcha");
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -36,7 +36,10 @@ function ContactForm() {
   const onSubmit = form.handleSubmit(async (data) => {
     try {
       setFormStatus("loading");
-      await axios.post("/api/contact", data);
+      await axios.post("/api/contact", {
+        contactData: data,
+        challengeToken,
+      });
       setFormStatus("success");
 
       setTimeout(() => {
@@ -48,7 +51,7 @@ function ContactForm() {
       setFormStatus("error");
       setTimeout(() => {
         setFormStatus("idle");
-      }, 5000);
+      }, 2000);
     }
   });
 
