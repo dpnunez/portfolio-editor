@@ -5,6 +5,7 @@
 .markdown {
   line-height: 1.6; /* Improve readability */
   padding: 20px; /* Padding inside the markdown container */
+  @apply mx-auto max-w-screen-lg;
 }
 
 /* Headers */
