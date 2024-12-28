@@ -16,7 +16,6 @@ import {
 import { mobileNavigation } from "@/constants/fileTrees";
 
 function isRouteActive(href: string, pathname: string) {
-  console.log(href, pathname);
   return pathname.includes(href);
 }
 
