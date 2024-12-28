@@ -14,7 +14,7 @@ function Page() {
         <Image
           placeholder="blur"
           className="mx-auto rounded-lg my-8"
-          src="/images/works/nav9-banner.png"
+          src={banner}
           width={800}
           height={800}
           alt="Nav9"
