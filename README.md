@@ -124,18 +124,6 @@ Explore the live version of the portfolio here:
 
 <br />
 
-## 📸 **Screenshots**
-
-#### ✨ Landing Page
-
-![Portfolio Landing Page](https://link-to-image.com/screenshot1.png)
-
-#### 💻 Interactive Code Editor
-
-![Code Editor Simulation](https://link-to-image.com/screenshot2.png)
-
-<br />
-
 ## 🧪 **Testing**
 
 ### Unit Tests
