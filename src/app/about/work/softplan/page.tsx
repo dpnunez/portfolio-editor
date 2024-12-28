@@ -33,7 +33,7 @@ function Page() {
         <h3>
           ### 1. <b>**Single Sign-On (SSO) Solution**</b>
         </h3>
-        <div className="flex gap-8 items-center">
+        <div className="flex gap-8 flex-col-reverse md:flex-row items-center">
           <div>
             <p>
               We are building a comprehensive <b>**SSO solution**</b> to serve
