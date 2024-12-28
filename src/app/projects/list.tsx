@@ -27,6 +27,7 @@ function ProjectsList() {
           <AnimatePresence>
             {filter.length > 0 && (
               <motion.div
+                data-testid="sql-filter-preview"
                 key="filters"
                 className="ml-8"
                 initial={{ opacity: 0, height: 0 }}
@@ -48,6 +49,7 @@ function ProjectsList() {
 
                       return (
                         <motion.span
+                          data-testid={`sql-filter-preview-${tag}`}
                           className={cn(
                             color,
                             "rounded-sm font-bold text-nowrap overflow-hidden"

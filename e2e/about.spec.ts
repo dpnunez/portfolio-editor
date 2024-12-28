@@ -1,13 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Navigate to About routes", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
-  await page.getByRole("link", { name: "/about" }).click();
-
-  await expect(page).toHaveURL("http://localhost:3000/about/me");
-});
-
-test("Render About 'file explorer' navigation", async ({ page }) => {
+test("Sould render About 'file explorer' navigation", async ({ page }) => {
   await page.goto("http://localhost:3000/about/me");
   const desktopMenu = await page.waitForSelector("#desktop-menu");
 

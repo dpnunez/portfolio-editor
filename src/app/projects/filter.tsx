@@ -20,7 +20,10 @@ function ProjectsFilter() {
     <Sidebar>
       <Accordion type="single" collapsible defaultValue="open">
         <AccordionItem value="open">
-          <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
+          <AccordionTrigger
+            className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight"
+            data-testid="projects-accordion"
+          >
             <FadeIn>Filters</FadeIn>
           </AccordionTrigger>
           <AccordionContent className="py-4">
@@ -29,6 +32,7 @@ function ProjectsFilter() {
               return (
                 <label className="cursor-pointer" key={e}>
                   <TreeRowContainer
+                    data-testid={`projects-filter-${e}`}
                     key={e}
                     className="items-center"
                     transition={{
