@@ -6,11 +6,7 @@ interface PageSubtitleProps extends HTMLAttributes<HTMLHeadingElement> {
 }
 
 function PageSubtitle({ children, className }: PageSubtitleProps) {
-  return (
-    <h2 className={cn("text-xl font-semibold text-gray-600", className)}>
-      {children}
-    </h2>
-  );
+  return <h2 className={cn("text-lg text-gray-600", className)}>{children}</h2>;
 }
 
 export { PageSubtitle };
