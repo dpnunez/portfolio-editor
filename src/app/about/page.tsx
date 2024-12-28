@@ -1,5 +1,7 @@
+import { redirect } from "next/navigation";
+
 function Page() {
-  return null;
+  redirect("/about/me");
 }
 
 export default Page;
