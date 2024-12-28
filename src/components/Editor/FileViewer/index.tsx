@@ -1,6 +1,8 @@
 import { cn } from "@/utils/styles";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import typescript from "react-syntax-highlighter/dist/esm/languages/prism/typescript";
 
+SyntaxHighlighter.registerLanguage("typescript", typescript);
 interface FileViewerProps {
   code: string;
   language?: string;
@@ -9,7 +11,7 @@ interface FileViewerProps {
 
 function FileViewer({
   code,
-  language = "javascript",
+  language = "typescript",
   className,
 }: FileViewerProps) {
   return (

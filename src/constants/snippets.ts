@@ -1,126 +1,112 @@
-const aboutSnippet = `
-"use client";
-import { fileTreeType } from "@/types/fileTree";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/Accordion";
-import { ChevronDown } from "lucide-react";
-import { SiTypescript } from "react-icons/si";
-import { FaFolder } from "react-icons/fa6";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/utils/styles";
-import * as motion from "motion/react-client";
-import { ComponentProps } from "react";
+const aboutSnippet = `type Hobby = {
+  name: string;
+  description?: string;
+  stat?: Record<string, string>;
+};
 
-interface FileTreeProps {
-  files: fileTreeType;
-  className?: string;
-}
+const personalInfo = {
+  name: "Daniel",
+  title: "Front-End Developer",
+  bio: "Building seamless web interfaces while indulging in tech and gaming hobbies.",
+  contact: {
+    email: "daniel.portonunez@gmail.com",
+    github: "https://www.github.com/dpnunez",
+    linkedin: "https://www.linkedin.com/in/daniel-porto-nunez/",
+  },
+};
 
-function FileTree({ files, className }: FileTreeProps) {
-  const pathname = usePathname();
+const hobbies: Hobby[] = [
+  {
+    name: "Mechanical Keyboards",
+    description: "Collecting, customizing, and experimenting with mechanical switches for the perfect typing feel.",
+  },
+  {
+    name: "Travel",
+    description: "Exploring new cultures and places, capturing inspiration for creative projects.",
+  },
+  {
+    name: "CS2",
+    stat: {
+      gc: 18,
+      faceit: 8
+    },
+  },
+  {
+    name: "League of Legends", // retired 🙏
+    stat: {
+      main: "Cassiopeia",
+      peak_rank: "Platinum I"
+    },
+  },
+];
 
-  return (
-    <div className={className}>
-      {files.map((item, i) => {
-        const isFolder = item.type === "folder";
-        const isActive = !isFolder && pathname === item.href;
+export { personalInfo, hobbies };`;
 
-        if (isFolder)
-          return (
-            <Accordion key={item.name} type="single" collapsible>
-              <AccordionItem value="1" className="border-b-0">
-                <AccordionTrigger className="[&>.indicator]:hidden [&[data-state=open]>*>.folder-indicator]:rotate-0">
-                  <TreeRowContainer
-                    className="px-8"
-                    transition={{
-                      delay: 0.1 * i,
-                      ease: "backInOut",
-                      duration: 0.3,
-                    }}
-                  >
-                    <ChevronDown
-                      size={16}
-                      className="folder-indicator transition-all -rotate-90 absolute left-2"
-                    />
-                    <TreeRowIcon>
-                      <FaFolder size={14} />
-                    </TreeRowIcon>
-                    {item.name}
-                  </TreeRowContainer>
-                </AccordionTrigger>
-                <AccordionContent className="pb-0">
-                  <FileTree className="ml-4" files={item.children} />
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          );
+const educationSnippet = `type Education = {
+  degree: string;
+  institution: string;
+  location: string;
+  startYear: number;
+  endYear?: number;
+  description?: string;
+};
 
-        return (
-          <Link key={item.name} href={item.href}>
-            <TreeRowContainer
-              transition={{
-                delay: 0.1 * i,
-                ease: "backInOut",
-                duration: 0.3,
-              }}
-              key={item.name}
-              className={cn("hover:bg-editor-hover", {
-                "bg-editor-background-highlight": isActive,
-              })}
-            >
-              <TreeRowIcon>
-                <SiTypescript size={14} />
-              </TreeRowIcon>
-              {item.name}
-            </TreeRowContainer>
-          </Link>
-        );
-      })}
-    </div>
-  );
-}
+const education: Education[] = [
+  {
+    degree: "High School with Technical Focus in Electronics",
+    institution: "Instituto Federal Sul-Rio-Grandense (IFSul)",
+    location: "Pelotas, Brazil",
+    startYear: 2015,
+    endYear: 2019,
+    description: "A technical high school program with an emphasis on electronics, including circuit design and hardware programming.",
+  },
+  {
+    degree: "Bachelor of Science in Computer Science",
+    institution: "Universidade Federal de Pelotas (UFPEL)",
+    location: "Pelotas, Brazil",
+    startYear: 2020,
+    description: "Currently pursuing a degree focused on software development, algorithms, and data structures.",
+  },
+  {
+    degree: "Exchange Program in Computer Science",
+    institution: "Instituto Politécnico de Bragança (IPB)",
+    location: "Bragança, Portugal",
+    startYear: 2025,
+    description: "Part of an exchange program, this internship will focus on software engineering and development practices.",
+  },
+];
 
-interface TreeRowContainerProps extends ComponentProps<typeof motion.div> {
-  children: React.ReactNode;
-}
+export { education };`;
 
-function TreeRowContainer({
-  children,
-  className,
-  ...props
-}: TreeRowContainerProps) {
-  return (
-    <div className="overflow-hidden">
-      <motion.div
-        initial={{
-          y: "150%",
-        }}
-        animate={{
-          y: 0,
-        }}
-        className={cn(
-          "flex items-center px-6 relative text-lg flex-1 rounded-md mx-2 transition-all",
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    </div>
-  );
-}
+const skillsSnippet = `const skills = {
+  languages: ["JavaScript", "TypeScript", "Swift", "Elixir", "Java"],
+  frameworks: [
+    "React", 
+    "Next.js", 
+    "Vue", 
+    "Svelte", 
+    "Express", 
+    "NestJS", 
+    "Phoenix",
+    "Spring Boot"
+  ],
+  databases: ["PostgreSQL", "MySQL", "MongoDB"],
+  orm: ["TypeORM", "Prisma"],
+  tools: [
+    "Git", 
+    "Docker", 
+    "Vitest", 
+    "Playwright", 
+    "VSCode",
+    "NeoVim", // bwt I use Vim 🤓👆 
+    "XCode",
+    "Figma",
+    "TablePlus",
+    "Vim"
+  ],
+};
 
-function TreeRowIcon({ children }: { children: React.ReactNode }) {
-  return <div className="w-6">{children}</div>;
-}
-
-export { FileTree, TreeRowContainer, TreeRowIcon };
-
+export { skills };
 `;
 
-export { aboutSnippet };
+export { aboutSnippet, educationSnippet, skillsSnippet };

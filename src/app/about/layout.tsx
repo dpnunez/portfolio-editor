@@ -30,7 +30,7 @@ export default function Layout({ children }: LayoutProps) {
           </AccordionItem>
         </Accordion>
       </Sidebar>
-      <MainContent>{children}</MainContent>
+      <MainContent className="px-0">{children}</MainContent>
     </>
   );
 }

@@ -20,7 +20,7 @@ const aboutFileTree: fileTreeType = [
       {
         name: "nav9.ts",
         type: "file",
-        href: "/about/work/tjmt",
+        href: "/about/work/nav9",
       },
     ],
   },

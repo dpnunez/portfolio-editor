@@ -24,6 +24,10 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
+code[class*="language-"] {
+  padding-bottom: 20px;
+}
+
 /* Code blocks */
 pre[class*="language-"] {
   font-size: 0.875rem;
@@ -126,7 +130,7 @@ pre[class*="language-"] {
 
 /* JS overrides */
 .language-js .token.keyword,
-.language-javascript .token.keyword {
+.language-typescript .token.keyword {
   color: var(--color-red);
 }
 
@@ -135,25 +139,25 @@ pre[class*="language-"] {
 .language-js .token.boolean,
 .language-js .token.number,
 .language-js .token.atrule,
-.language-javascript .token.operator,
-.language-javascript .token.constant,
-.language-javascript .token.boolean,
-.language-javascript .token.number,
-.language-javascript .token.atrule {
+.language-typescript .token.operator,
+.language-typescript .token.constant,
+.language-typescript .token.boolean,
+.language-typescript .token.number,
+.language-typescript .token.atrule {
   color: var(--color-blue);
 }
 
 .language-js .token.function,
-.language-javascript .token.function {
+.language-typescript .token.function {
   color: var(--color-purple);
 }
 
 .language-js .token.attr-name,
 .language-js .token.class-name,
 .language-js .token.function-variable,
-.language-javascript .token.attr-name,
-.language-javascript .token.class-name,
-.language-javascript .token.function-variable {
+.language-typescript .token.attr-name,
+.language-typescript .token.class-name,
+.language-typescript .token.function-variable {
   color: var(--color-brown);
 }
 
