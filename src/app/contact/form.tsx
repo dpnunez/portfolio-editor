@@ -57,7 +57,7 @@ function ContactForm() {
   });
 
   return (
-    <div className="flex flex-1 items-center px-1 gap-8 overflow-hidden">
+    <div className="flex flex-1 items-center px-1 gap-8 md:overflow-hidden">
       <Form {...form}>
         <form onSubmit={onSubmit} className="flex-1 flex flex-col gap-5">
           <FormField
@@ -106,9 +106,11 @@ function ContactForm() {
             )}
           />
           <div id="captcha" className="hidden" />
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between flex-col md:flex-row gap-4">
             <CaptchaStatus status={challengeStatus} />
             <FormButton
+              disabled={challengeStatus !== "success"}
+              className="w-full md:w-auto"
               ErrorSlot="error"
               IdleSlot="$submit"
               LoadingSlot="loading"
@@ -118,7 +120,7 @@ function ContactForm() {
             />
           </div>
         </form>
-        <ContactRequestPreview className="flex-1" />
+        <ContactRequestPreview className="hidden lg:flex lg:flex-1" />
       </Form>
     </div>
   );
