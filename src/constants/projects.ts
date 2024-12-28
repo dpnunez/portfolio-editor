@@ -1,11 +1,12 @@
 import { Project } from "@/types/projects";
 import { portfolioRepositoryLink } from "./links";
+import portfolioBanner from "@/assets/portfolio.png";
 
 const projectsData: Project[] = [
   {
     name: "Portfolio Editor Based",
     tags: ["TypeScript", "React", "Node.js"],
-    banner: "/images/projects/portfolio.png",
+    banner: portfolioBanner,
     url: portfolioRepositoryLink,
   },
 ];

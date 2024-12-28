@@ -115,9 +115,10 @@ function ProjectsList() {
                 <div className="rounded-2xl h-full w-full p-4 overflow-hidden border border-editor-divider group-hover:border-editor-text-primary relative z-50">
                   <div className="relative z-50">
                     <Image
-                      className="w-full aspect-video"
-                      width={300}
-                      height={300}
+                      className="w-full aspect-video object-cover"
+                      width={1280}
+                      height={720}
+                      placeholder="blur"
                       src={project.banner}
                       alt={project.name}
                     />
