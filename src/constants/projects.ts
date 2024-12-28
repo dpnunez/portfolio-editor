@@ -1,55 +1,12 @@
 import { Project } from "@/types/projects";
+import { portfolioRepositoryLink } from "./links";
 
 const projectsData: Project[] = [
   {
-    name: "Project 1",
-    tags: ["TypeScript", "JavaScript"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 2",
-    tags: ["TypeScript", "React"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 3",
-    tags: ["JavaScript", "React"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 4",
-    tags: ["TypeScript", "Node.js"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 5",
-    tags: ["JavaScript", "React Native"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 6",
-    tags: ["TypeScript", "Node.js"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 7",
-    tags: ["JavaScript", "React"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 8",
-    tags: ["TypeScript", "React Native"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 9",
-    tags: ["JavaScript", "React"],
-    banner: "https://picsum.photos/200/300",
-  },
-  {
-    name: "Project 10",
-    tags: ["TypeScript", "Node.js"],
-    banner: "https://picsum.photos/200/300",
+    name: "Portfolio Editor Based",
+    tags: ["TypeScript", "React", "Node.js"],
+    banner: "/images/projects/portfolio.png",
+    url: portfolioRepositoryLink,
   },
 ];
 

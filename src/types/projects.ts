@@ -3,4 +3,5 @@ export interface Project {
   name: string;
   tags: (typeof projectTags)[number][];
   banner: string;
+  url: string;
 }

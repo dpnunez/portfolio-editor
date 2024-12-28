@@ -83,13 +83,15 @@ function ProjectsList() {
         <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
           <AnimatePresence>
             {projects.map((project, idx) => (
-              <motion.div
+              <motion.a
                 exit={{ opacity: 0 }}
                 layout="position"
                 key={project.name}
                 className="relative group block p-2 h-full w-full"
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
+                href={project.url}
+                target="_blank"
               >
                 <AnimatePresence>
                   {hoveredIndex === idx && (
@@ -117,7 +119,7 @@ function ProjectsList() {
                       src={project.banner}
                       alt={project.name}
                     />
-                    <div className="p-4">
+                    <div className="py-4">
                       <h4 className="text-zinc-100 font-bold tracking-wide mt-4">
                         {project.name}
                       </h4>
@@ -132,7 +134,7 @@ function ProjectsList() {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </AnimatePresence>
         </div>
