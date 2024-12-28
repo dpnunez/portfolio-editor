@@ -1,5 +1,7 @@
 import { FadeIn, MainContent } from "@/components";
 import Image from "next/image";
+import siengeIdBanner from "./sienge-id.png";
+import softplanBanner from "./softplan-banner.png";
 
 function Page() {
   return (
@@ -11,8 +13,9 @@ function Page() {
           {">"} <b>**Started in July 2024**</b>
         </span>
         <Image
+          placeholder="blur"
           className="mx-auto rounded-lg my-8"
-          src="/images/works/softplan-banner.png"
+          src={softplanBanner}
           width={800}
           height={800}
           alt="Softplan"
@@ -60,9 +63,10 @@ function Page() {
             </ul>
           </div>
           <Image
+            placeholder="blur"
             className="rounded-2xl"
             alt="sienge-id"
-            src="/images/works/sienge-id.png"
+            src={siengeIdBanner}
             width={600}
             height={300}
           />

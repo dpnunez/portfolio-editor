@@ -1,5 +1,6 @@
 import { FadeIn, MainContent } from "@/components";
 import Image from "next/image";
+import banner from "./nav9-banner.png";
 
 function Page() {
   return (
@@ -11,6 +12,7 @@ function Page() {
           {">"} <b>**from October 2019 to November 2023**</b>
         </span>
         <Image
+          placeholder="blur"
           className="mx-auto rounded-lg my-8"
           src="/images/works/nav9-banner.png"
           width={800}
