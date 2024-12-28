@@ -1,8 +1,10 @@
+![image](./src/assets/portfolio.png)
+
 # 🎨 **Portfolio** - Code Editor Simulation ✨
 
 Welcome to **Portfolio 2025**, a modern, interactive landing page that simulates a sophisticated code editor. This project is designed to showcase my front-end development skills and deliver an engaging, immersive experience. Whether you're exploring my projects or interacting with the editor, you'll see how I use modern technologies to create seamless and functional web experiences.
 
-🚀 **Live Demo**: [View Portfolio](https://your-portfolio.vercel.app)
+🚀 **Live Demo**: [View Portfolio](https://portfolio-editor-gamma.vercel.app/)
 
 ## 🛠️ **Tech Stack**
 
@@ -66,21 +68,13 @@ This project is powered by an array of cutting-edge technologies that provide a 
 <br />
 
 ## 🚧 **Future Improvements / Debts**
-
-While the current version of **Portfolio 2025** offers a solid foundation and interactive experience, there are still several areas for improvement and features to be added in future updates:
+While the current version of **Portfolio** offers a solid foundation and interactive experience, there are still several areas for improvement and features to be added in future updates:
 
 ### 🔄 **Code Editor Enhancements**
-
 - **New themes**: Add more themes and customization options for the code editor, currently whe only have GitHub Dark and Light.
 
 ### 🧪 **Testing Enhancements**
-
 - **Add testing integrate with NextAuth**: Add tests for the authentication flow and session management
-
-### 🏗️ **User Authentication and Profile**
-
-- **User Profiles**: Enable users to create and manage accounts, and save their code or progress across sessions.
-- **Social Media Integration**: Add the ability for users to log in via **GitHub** or **Google** authentication.
 
 <br />
 
@@ -94,7 +88,7 @@ git clone https://github.com/dpnunez/portfolio-editor.git
 
 ### 2. **Install Dependencies**
 
-> **Note**: Make sure you have **Node.js** installed on your machine, the version is specified in nvmrc.
+> **Important**: Make sure you have **Node.js** installed on your machine, the version is specified in nvmrc.
 
 ```bash
 cd portfolio-editor
