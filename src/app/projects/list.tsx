@@ -24,62 +24,62 @@ function ProjectsList() {
         <span>
           <SqlHighlight>SELECT</SqlHighlight> <em>banner, title, tags</em>{" "}
           <SqlHighlight>FROM</SqlHighlight> <em>projects</em>
-        </span>
-        <AnimatePresence>
-          {filter.length > 0 && (
-            <motion.div
-              key="filters"
-              className="ml-8"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{
-                height: "auto",
-                opacity: 1,
-              }}
-              exit={{
-                height: 0,
-                opacity: 0,
-              }}
-            >
-              <SqlHighlight>WHERE</SqlHighlight> <em>tags</em> IN{" "}
-              <div className="inline-flex">
-                <AnimatePresence>
-                  {filter.map((tag, i, arr) => {
-                    const color = tagToColor[tag as keyof typeof tagToColor];
-                    const isLast = i === arr.length - 1;
+          <AnimatePresence>
+            {filter.length > 0 && (
+              <motion.div
+                key="filters"
+                className="ml-8"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{
+                  height: "auto",
+                  opacity: 1,
+                }}
+                exit={{
+                  height: 0,
+                  opacity: 0,
+                }}
+              >
+                <SqlHighlight>WHERE</SqlHighlight> <em>tags</em> IN{" "}
+                <div className="inline-flex">
+                  <AnimatePresence>
+                    {filter.map((tag, i, arr) => {
+                      const color = tagToColor[tag as keyof typeof tagToColor];
+                      const isLast = i === arr.length - 1;
 
-                    return (
-                      <motion.span
-                        className={cn(
-                          color,
-                          "rounded-sm font-bold text-nowrap overflow-hidden"
-                        )}
-                        initial={{
-                          marginRight: 0,
-                          opacity: 0,
-                          width: 0,
-                        }}
-                        animate={{
-                          marginRight: isLast ? 0 : 12,
-                          opacity: 1,
-                          width: "auto",
-                        }}
-                        exit={{
-                          marginRight: 0,
-                          width: 0,
-                          opacity: 0,
-                        }}
-                        key={`filter-${tag}`}
-                      >
-                        <span className="px-2">{tag}</span>
-                      </motion.span>
-                    );
-                  })}
-                </AnimatePresence>
-                <motion.span>;</motion.span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+                      return (
+                        <motion.span
+                          className={cn(
+                            color,
+                            "rounded-sm font-bold text-nowrap overflow-hidden"
+                          )}
+                          initial={{
+                            marginRight: 0,
+                            opacity: 0,
+                            width: 0,
+                          }}
+                          animate={{
+                            marginRight: isLast ? 0 : 12,
+                            opacity: 1,
+                            width: "auto",
+                          }}
+                          exit={{
+                            marginRight: 0,
+                            width: 0,
+                            opacity: 0,
+                          }}
+                          key={`filter-${tag}`}
+                        >
+                          <span className="px-2">{tag}</span>
+                        </motion.span>
+                      );
+                    })}
+                  </AnimatePresence>
+                  <motion.span>;</motion.span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </span>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
           <AnimatePresence>
             {projects.map((project, idx) => (
