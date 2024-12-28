@@ -56,7 +56,7 @@ function GuestBookList({ hasSent, initialBookData }: GuestBookListProps) {
         </div>
       </div>
 
-      <Table>
+      <Table className="overflow-hidden">
         <TableHeader>
           <TableRow>
             <TableHead>username</TableHead>

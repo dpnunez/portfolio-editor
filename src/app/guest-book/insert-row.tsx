@@ -93,7 +93,11 @@ function InsertRow({
   });
 
   return (
-    <motion.form layout onSubmit={onSubmit} className="flex gap-4">
+    <motion.form
+      layout
+      onSubmit={onSubmit}
+      className="flex-col md:flex-row flex gap-4"
+    >
       <motion.div layout className="flex-1">
         <Input
           disabled={requestStatus === "sent"}
@@ -109,7 +113,7 @@ function InsertRow({
       </motion.div>
       <FormButton
         {...buttonProps}
-        className="w-48"
+        className="md:w-48 md:flex-none flex-1"
         type={buttonStatus === "unauthenticated" ? "button" : "submit"}
         ErrorSlot="Error"
         IdleSlot={
