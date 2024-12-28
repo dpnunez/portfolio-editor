@@ -41,7 +41,7 @@ This project is powered by an array of cutting-edge technologies that provide a 
 - **Vercel** - Serverless deployment platform optimized for Next.js apps.
 - **GitHub Actions** - CI/CD workflows for automating testing and deployment processes.
 
----
+<br />
 
 ## ✨ **Features**
 
@@ -63,7 +63,7 @@ This project is powered by an array of cutting-edge technologies that provide a 
 
 - Unit tests with **Vitest** and end-to-end tests powered by **Playwright** to ensure smooth functionality.
 
----
+<br />
 
 ## 🚧 **Future Improvements / Debts**
 
@@ -82,7 +82,7 @@ While the current version of **Portfolio 2025** offers a solid foundation and in
 - **User Profiles**: Enable users to create and manage accounts, and save their code or progress across sessions.
 - **Social Media Integration**: Add the ability for users to log in via **GitHub** or **Google** authentication.
 
----
+<br />
 
 ## 💡 **Installation**
 
@@ -121,14 +121,14 @@ If you’re planning to use the back-end features:
 
 2. Set up the database schema and run migrations as needed.
 
----
+<br />
 
 ## 🌐 **Live Demo**
 
 Explore the live version of the portfolio here:  
 [**Portfolio Live Demo**](https://portfolio-editor-gamma.vercel.app/)
 
----
+<br />
 
 ## 📸 **Screenshots**
 
@@ -140,7 +140,7 @@ Explore the live version of the portfolio here:
 
 ![Code Editor Simulation](https://link-to-image.com/screenshot2.png)
 
----
+<br />
 
 ## 🧪 **Testing**
 
@@ -160,7 +160,7 @@ Run end-to-end tests with **Playwright**:
 npx playwright test
 ```
 
----
+<br />
 
 ## 📜 **License**
 
