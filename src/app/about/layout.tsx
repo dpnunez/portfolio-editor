@@ -21,7 +21,10 @@ export default function Layout({ children }: LayoutProps) {
       <Sidebar>
         <Accordion type="single" collapsible defaultValue="open">
           <AccordionItem value="open">
-            <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
+            <AccordionTrigger
+              data-testid="about-accordion"
+              className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight"
+            >
               <FadeIn>About</FadeIn>
             </AccordionTrigger>
             <AccordionContent className="py-4">

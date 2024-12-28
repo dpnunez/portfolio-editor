@@ -7,18 +7,21 @@ interface FileViewerProps {
   code: string;
   language?: string;
   className?: string;
+  "data-testid"?: string;
 }
 
 function FileViewer({
   code,
   language = "typescript",
   className,
+  "data-testid": dataTestId,
 }: FileViewerProps) {
   return (
     <SyntaxHighlighter
       language={language}
       showLineNumbers
       className={cn("!bg-transparent", className)}
+      data-testid={dataTestId}
     >
       {code}
     </SyntaxHighlighter>

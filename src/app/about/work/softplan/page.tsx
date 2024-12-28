@@ -6,7 +6,7 @@ import softplanBanner from "./softplan-banner.png";
 function Page() {
   return (
     <FadeIn>
-      <MainContent className="markdown">
+      <MainContent className="markdown" data-testid="softplan-page">
         <h1># Softplan</h1>
 
         <span>

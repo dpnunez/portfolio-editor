@@ -68,6 +68,7 @@ function FileTree({ files, className }: FileTreeProps) {
                 duration: 0.3,
               }}
               key={item.name}
+              data-is-file-active={isActive}
               className={cn("hover:bg-editor-hover", {
                 "bg-editor-background-highlight": isActive,
               })}
