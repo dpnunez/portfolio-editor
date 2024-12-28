@@ -20,7 +20,7 @@ function Page() {
         <Link target="_blank" href={portfolioRepositoryLink}>
           <PrismLight
             className="!bg-transparent hidden md:block"
-            language="javascript"
+            language="typescript"
           >
             {`// fell free to access the code of this page in my github\nconst url = "${portfolioRepositoryLink}"`}
           </PrismLight>
