@@ -19,7 +19,8 @@ const aboutFileTree: fileTreeType = [
         href: "/about/work/softplan",
       },
       {
-        name: "nav9.ts",
+        name: "nav9.md",
+        icon: <FaMarkdown size={14} />,
         type: "file",
         href: "/about/work/nav9",
       },
