@@ -13,8 +13,9 @@ const aboutFileTree: fileTreeType = [
     type: "folder",
     children: [
       {
-        name: "softplan.ts",
+        name: "softplan.md",
         type: "file",
+        icon: <FaMarkdown size={14} />,
         href: "/about/work/softplan",
       },
       {
