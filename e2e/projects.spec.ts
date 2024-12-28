@@ -1,7 +1,7 @@
 import { projectTags } from "@/constants/projects";
 import { test, expect } from "@playwright/test";
 
-test("Should handle change filter", async ({ page }) => {
+test("Should response when filter changes", async ({ page }) => {
   await page.goto("http://localhost:3000/projects");
 
   await expect(page.getByTestId("projects-accordion")).toHaveText("Filters");

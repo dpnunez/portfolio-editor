@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Sould render About 'file explorer' navigation", async ({ page }) => {
+test("Should render About 'file explorer' navigation", async ({ page }) => {
   await page.goto("http://localhost:3000/about/me");
   const desktopMenu = await page.waitForSelector("#desktop-menu");
 
@@ -17,7 +17,7 @@ test("Sould render About 'file explorer' navigation", async ({ page }) => {
   await expect(page.getByRole("link", { name: "nav9.md" })).toBeVisible();
 });
 
-test("Personal information", async ({ page }) => {
+test("Should render personal information (me)", async ({ page }) => {
   await page.goto("http://localhost:3000/about/me");
   await page.getByRole("link", { name: "me.ts" }).click();
 
@@ -26,7 +26,9 @@ test("Personal information", async ({ page }) => {
   await expect(page.getByTestId("me-code-snippet")).toBeVisible();
 });
 
-test("Work experience", async ({ page }) => {
+test("Should render and navigate between work experiences", async ({
+  page,
+}) => {
   await page.goto("http://localhost:3000/about/me");
   await page.getByRole("button", { name: "work" }).click();
   await page.getByRole("link", { name: "softplan.md" }).click();
@@ -38,7 +40,7 @@ test("Work experience", async ({ page }) => {
   await expect(page.getByTestId("softplan-page")).toBeVisible();
 });
 
-test("Education", async ({ page }) => {
+test("Should render education page", async ({ page }) => {
   await page.goto("http://localhost:3000/about/me");
   await page.getByRole("link", { name: "education.ts" }).click();
 
@@ -49,7 +51,7 @@ test("Education", async ({ page }) => {
   await expect(page.getByTestId("education-code-snippet")).toBeVisible();
 });
 
-test("Skills", async ({ page }) => {
+test("Should render skills page", async ({ page }) => {
   await page.goto("http://localhost:3000/about/me");
   await page.getByRole("link", { name: "skills.ts" }).click();
 
