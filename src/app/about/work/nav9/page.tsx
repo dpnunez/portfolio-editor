@@ -13,10 +13,10 @@ function Page() {
         </span>
         <Image
           placeholder="blur"
-          className="mx-auto rounded-lg my-8"
+          className="mx-auto rounded-lg my-8 max-w-full w-[800px]"
           src={banner}
-          width={800}
-          height={800}
+          width={1128}
+          height={191}
           alt="Nav9"
         />
         <h2>## Company Overview</h2>

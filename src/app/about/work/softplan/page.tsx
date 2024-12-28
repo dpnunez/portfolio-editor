@@ -14,10 +14,10 @@ function Page() {
         </span>
         <Image
           placeholder="blur"
-          className="mx-auto rounded-lg my-8"
+          className="mx-auto rounded-lg my-8 w-[800px] max-w-full"
           src={softplanBanner}
           width={800}
-          height={800}
+          height={403}
           alt="Softplan"
         />
         <h2>## Company Overview</h2>
