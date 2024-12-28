@@ -21,7 +21,7 @@ function ProjectsFilter() {
       <Accordion type="single" collapsible defaultValue="open">
         <AccordionItem value="open">
           <AccordionTrigger className="text-md p-4 [&[data-state=open]]:bg-editor-background-highlight">
-            <FadeIn>aass</FadeIn>
+            <FadeIn>Filters</FadeIn>
           </AccordionTrigger>
           <AccordionContent className="py-4">
             {projectTags.map((e, i) => {

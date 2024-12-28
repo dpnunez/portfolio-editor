@@ -20,7 +20,7 @@ function ProjectsList() {
 
   return (
     <FadeIn>
-      <MainContent className="p-8 flex flex-col">
+      <MainContent className="p-8 flex flex-col gap-6">
         <span>
           <SqlHighlight>SELECT</SqlHighlight> <em>banner, title, tags</em>{" "}
           <SqlHighlight>FROM</SqlHighlight> <em>projects</em>
@@ -80,14 +80,14 @@ function ProjectsList() {
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="grid gap-4 grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
           <AnimatePresence>
             {projects.map((project, idx) => (
               <motion.div
                 exit={{ opacity: 0 }}
                 layout="position"
                 key={project.name}
-                className="relative group block p-2 h-full w-full "
+                className="relative group block p-2 h-full w-full -mx-2"
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
