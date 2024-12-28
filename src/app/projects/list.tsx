@@ -20,7 +20,7 @@ function ProjectsList() {
 
   return (
     <FadeIn>
-      <MainContent className="p-8 flex flex-col gap-6">
+      <MainContent className="flex flex-col gap-6">
         <span>
           <SqlHighlight>SELECT</SqlHighlight> <em>banner, title, tags</em>{" "}
           <SqlHighlight>FROM</SqlHighlight> <em>projects</em>
@@ -87,7 +87,7 @@ function ProjectsList() {
                 exit={{ opacity: 0 }}
                 layout="position"
                 key={project.name}
-                className="relative group block p-2 h-full w-full -mx-2"
+                className="relative group block p-2 h-full w-full"
                 onMouseEnter={() => setHoveredIndex(idx)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
