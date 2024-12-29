@@ -68,12 +68,16 @@ This project is powered by an array of cutting-edge technologies that provide a 
 <br />
 
 ## 🚧 **Future Improvements / Debts**
+
 While the current version of **Portfolio** offers a solid foundation and interactive experience, there are still several areas for improvement and features to be added in future updates:
 
 ### 🔄 **Code Editor Enhancements**
+
 - **New themes**: Add more themes and customization options for the code editor, currently whe only have GitHub Dark and Light.
+- **Initial Loader Animation on Guest Book**: Add a loader animation to the guest book while fetching the comments (this page use SSR to fetch messages, so it can take a time before showing the page result).
 
 ### 🧪 **Testing Enhancements**
+
 - **Add testing integrate with NextAuth**: Add tests for the authentication flow and session management
 
 <br />
