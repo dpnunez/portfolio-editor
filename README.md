@@ -4,7 +4,7 @@
 
 Welcome to **Portfolio 2025**, a modern, interactive landing page that simulates a sophisticated code editor. This project is designed to showcase my front-end development skills and deliver an engaging, immersive experience. Whether you're exploring my projects or interacting with the editor, you'll see how I use modern technologies to create seamless and functional web experiences.
 
-🚀 **Live Demo**: [View Portfolio](https://portfolio-editor-gamma.vercel.app/)
+🚀 **Live Demo**: [View Portfolio](https://www.dpnunez.tech)
 
 ## 🛠️ **Tech Stack**
 
@@ -124,7 +124,7 @@ If you’re planning to use the back-end features:
 ## 🌐 **Live Demo**
 
 Explore the live version of the portfolio here:  
-[**Portfolio Live Demo**](https://portfolio-editor-gamma.vercel.app/)
+[**Portfolio Live Demo**](https://www.dpnunez.tech)
 
 <br />
 
