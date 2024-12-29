@@ -100,7 +100,7 @@ function InsertRow({
     >
       <motion.div layout className="flex-1">
         <Input
-          disabled={requestStatus === "sent"}
+          disabled={requestStatus === "sent" || status !== "authenticated"}
           placeholder={
             requestStatus === "sent"
               ? "You had already signed this book!"
