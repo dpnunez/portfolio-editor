@@ -123,14 +123,14 @@ function ProjectsList() {
                       alt={project.name}
                     />
                     <div className="py-4">
-                      <h4 className="text-zinc-100 font-bold tracking-wide mt-4">
+                      <h4 className="font-bold tracking-wide mt-4">
                         {project.name}
                       </h4>
                     </div>
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="bg-editor-background-highlight text-zinc-100 text-xs font-bold px-2 py-1 rounded-full mr-2"
+                        className="bg-editor-background-highlight text-xs font-bold px-2 py-1 rounded-full mr-2"
                       >
                         {tag}
                       </span>
