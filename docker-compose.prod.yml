@@ -1,0 +1,9 @@
+services:
+  portfolio-editor-app-build:
+    container_name: portfolio-editor-app-build
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "4000:3000"
+    tty: true
