@@ -107,21 +107,23 @@ npm run dev
 
 Your local server should be running at [http://localhost:3000](http://localhost:3000).
 
-#### **Running on Docker**
 
-You can also run the project using Docker, just run the following command:
+### Extra: **Running on Docker**  
 
-development server:
+You can also run the portfolio using Docker in two modes:  
 
-```bash
-docker-compose -f docker-compose.dev.yml up
-```
+1. **Development server**  
+   Runs the project with hot-reloading support for easier development. Use the following command:  
+   ```bash
+   docker-compose -f docker-compose.dev.yml up --build
+   ```  
 
-production server (builds the project and runs the server):
+2. **Production server**  
+   Builds the project and runs it in production mode. Use the following command:  
+   ```bash
+   docker-compose -f docker-compose.prod.yml up --build
+   ```  
 
-```bash
-docker-compose up -f docker-compose.prod.yml
-```
 
 ### 4. **Prisma Setup (Optional for Database Integration)**
 
