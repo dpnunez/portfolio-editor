@@ -33,7 +33,7 @@ function FileTree({ files, className }: FileTreeProps) {
           return (
             <Accordion key={item.name} type="single" collapsible>
               <AccordionItem value="1" className="border-b-0">
-                <AccordionTrigger className="[&>.indicator]:hidden [&[data-state=open]>*>.folder-indicator]:rotate-0">
+                <AccordionTrigger className="[&>.indicator]:hidden [&[data-state=open]_.folder-indicator]:rotate-0">
                   <TreeRowContainer
                     className="px-8"
                     transition={{
