@@ -9,7 +9,7 @@ interface FadeInProps extends ComponentProps<typeof motion.div> {
 function FadeIn({ children, ...props }: FadeInProps) {
   return (
     <motion.div
-      className="flex-1 max-h-full flex items-start"
+      className="flex-1 flex items-start"
       initial={{
         opacity: 0,
       }}

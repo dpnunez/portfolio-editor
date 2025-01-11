@@ -24,10 +24,6 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-code[class*="language-"] {
-  padding-bottom: 20px;
-}
-
 /* Code blocks */
 pre[class*="language-"] {
   font-size: 0.875rem;

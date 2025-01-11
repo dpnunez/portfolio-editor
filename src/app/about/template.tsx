@@ -6,7 +6,7 @@ interface TemplateProps {
 }
 
 function Template({ children }: TemplateProps) {
-  return <FadeIn className="flex flex-1 h-full">{children}</FadeIn>;
+  return <FadeIn>{children}</FadeIn>;
 }
 
 export default Template;

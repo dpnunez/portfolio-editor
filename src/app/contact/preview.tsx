@@ -24,7 +24,7 @@ function ContactRequestPreview({ className }: ContactRequestPreviewProps) {
         <SiTypescript />
         /src/app/contact/form.tsx
       </span>
-      <div className="overflow-auto flex-1">
+      <div className="overflow-auto flex-1 mt-4">
         <FileViewer code={generateFakeFile({ name, email, message })} />
       </div>
     </div>
