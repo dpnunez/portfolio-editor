@@ -10,6 +10,7 @@ import {
   Menu,
   ThemePicker,
   ThemeProvider,
+  TooltipProvider,
 } from "@/components";
 import { cn } from "@/utils/styles";
 import { PreviousPathProvider } from "@/context/PreviusPathContext";
@@ -46,21 +47,23 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <PreviousPathProvider>
-          <ThemeProvider attribute="class" defaultTheme="github-dark">
-            <EditorContainer>
-              <header className="h-12 border-b border-editor-divider flex items-center">
-                <Logo />
-                <Menu />
-                <div className="hidden md:flex ml-auto h-full border-l border-editor-divider items-center  overflow-hidden">
-                  <ThemePicker />
-                </div>
-              </header>
-              <EditorContent>{children}</EditorContent>
-              <EditorFooter />
-            </EditorContainer>
-          </ThemeProvider>
-        </PreviousPathProvider>
+        <TooltipProvider>
+          <PreviousPathProvider>
+            <ThemeProvider attribute="class" defaultTheme="github-dark">
+              <EditorContainer>
+                <header className="h-12 border-b border-editor-divider flex items-center">
+                  <Logo />
+                  <Menu />
+                  <div className="hidden md:flex ml-auto h-full border-l border-editor-divider items-center  overflow-hidden">
+                    <ThemePicker />
+                  </div>
+                </header>
+                <EditorContent>{children}</EditorContent>
+                <EditorFooter />
+              </EditorContainer>
+            </ThemeProvider>
+          </PreviousPathProvider>
+        </TooltipProvider>
       </body>
     </html>
   );
