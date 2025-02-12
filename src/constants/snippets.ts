@@ -98,7 +98,7 @@ const skillsSnippet = `const skills = {
     "Vitest", 
     "Playwright", 
     "VSCode",
-    "NeoVim", // bwt I use Vim 🤓👆 
+    "NeoVim", // btw I use Vim 🤓👆 
     "XCode",
     "Figma",
     "TablePlus",
