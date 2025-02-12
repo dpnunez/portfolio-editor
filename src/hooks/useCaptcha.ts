@@ -9,7 +9,10 @@ const useCaptcha = (containerId: string) => {
   const [challengeToken, setChallengeToken] = useState<string | null>(null);
 
   useScript(
-    "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback",
+    {
+      removeOnUnmount: true,
+    }
   );
 
   useEffect(() => {
