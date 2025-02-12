@@ -5,4 +5,7 @@ export interface Project {
   tags: (typeof projectTags)[number][];
   banner: StaticImageData;
   url: string;
+  type?: ProjectType;
 }
+
+export type ProjectType = "personal" | "professional";

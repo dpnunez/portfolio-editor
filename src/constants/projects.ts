@@ -22,12 +22,14 @@ const projects: Project[] = [
     tags: ["TypeScript", "React", "Node.js"],
     banner: portfolioBanner,
     url: portfolioRepositoryLink,
+    type: "personal",
   },
   {
     name: "Sienge ID",
     tags: ["JavaScript", "TypeScript", "Java"],
     banner: siengeIdBanner,
     url: siengeIdDocumentationLink,
+    type: "professional",
   },
 ];
 

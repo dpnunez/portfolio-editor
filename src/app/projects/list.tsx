@@ -6,6 +6,7 @@ import { AnimatePresence } from "motion/react";
 import { use, useState } from "react";
 import Image from "next/image";
 import { ProjectsSqlFilterViewer } from "./sql-filter-viewer";
+import { ProjectTypeIndicator } from "./project-type-indicator";
 
 function ProjectsList() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -60,14 +61,19 @@ function ProjectsList() {
                         {project.name}
                       </h4>
                     </div>
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="bg-editor-background-highlight text-xs font-bold px-2 py-1 rounded-full mr-2"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    <div className="flex justify-between items-center">
+                      <div>
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-editor-background-highlight text-xs font-bold px-2 py-1 rounded-full mr-2"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <ProjectTypeIndicator projectType={project.type} />
+                    </div>
                   </div>
                 </div>
               </motion.a>
