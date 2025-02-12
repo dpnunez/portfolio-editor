@@ -12,6 +12,8 @@ const tagToColor = {
   JavaScript: "bg-tech-javascript-background text-tech-javascript-foreground",
   TypeScript: "bg-tech-typescript-background text-tech-typescript-foreground",
   "Node.js": "bg-tech-node-background text-tech-node-foreground",
+  "React Native": "bg-tech-react-background text-tech-react-foreground",
+  Java: "bg-tech-java-background text-tech-java-foreground",
 };
 
 function ProjectsList() {

@@ -1,6 +1,11 @@
 import { Project } from "@/types/projects";
 import portfolioBanner from "@/assets/portfolio.png";
-import { portfolioRepositoryLink } from "@/constants/links";
+import siengeIdBanner from "@/assets/sienge-id.png";
+
+import {
+  portfolioRepositoryLink,
+  siengeIdDocumentationLink,
+} from "@/constants/links";
 
 const projectTags = [
   "TypeScript",
@@ -8,6 +13,7 @@ const projectTags = [
   "React",
   "Node.js",
   "React Native",
+  "Java",
 ] as const;
 
 const projects: Project[] = [
@@ -16,6 +22,12 @@ const projects: Project[] = [
     tags: ["TypeScript", "React", "Node.js"],
     banner: portfolioBanner,
     url: portfolioRepositoryLink,
+  },
+  {
+    name: "Sienge ID",
+    tags: ["JavaScript", "TypeScript", "Java"],
+    banner: siengeIdBanner,
+    url: siengeIdDocumentationLink,
   },
 ];
 

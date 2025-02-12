@@ -41,6 +41,10 @@ export default {
             background: "#3178c6",
             foreground: "#ffffff",
           },
+          java: {
+            background: "#b07219",
+            foreground: "#ffffff",
+          },
         },
         card: {
           DEFAULT: "hsl(var(--card))",
