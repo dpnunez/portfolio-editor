@@ -2,7 +2,11 @@
 import { createContext, ReactNode, useCallback, useMemo } from "react";
 import { useStateViaQueryParams } from "@/hooks/useStateViaQueryParams";
 import { Project } from "@/types/projects";
-import { projects } from "@/constants/projects";
+import { portfolioRepositoryLink } from "@/constants/links";
+import { siengeIdDocumentationLink } from "@/constants/links";
+
+import portfolioBanner from "@/assets/portfolio.png";
+import siengeIdBanner from "@/assets/sienge-id.png";
 
 interface ProjectsContextProps {
   projects: Project[];
@@ -10,6 +14,23 @@ interface ProjectsContextProps {
   handleChangeFilter: (checked: boolean, id: string) => void;
   filter: string[];
 }
+
+const projects: Project[] = [
+  {
+    name: "Portfolio Editor Based",
+    tags: ["TypeScript", "React", "Node.js"],
+    banner: portfolioBanner,
+    url: portfolioRepositoryLink,
+    type: "personal",
+  },
+  {
+    name: "Sienge ID",
+    tags: ["JavaScript", "TypeScript", "Java"],
+    banner: siengeIdBanner,
+    url: siengeIdDocumentationLink,
+    type: "professional",
+  },
+];
 
 const ProjectsContext = createContext<ProjectsContextProps>(
   {} as ProjectsContextProps
