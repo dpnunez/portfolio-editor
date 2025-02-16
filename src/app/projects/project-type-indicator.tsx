@@ -34,7 +34,7 @@ function ProjectTypeIndicator({ projectType }: ProjectTypeIndicatorProps) {
   return (
     <Tooltip>
       <TooltipTrigger>
-        <div className="bg-editor-background-highlight rounded-full items-center flex justify-center w-8 h-8">
+        <div className="bg-editor-background-highlight rounded-full items-center flex justify-center w-8 h-8 hover:scale-110 hover:bg-background/25 transition-all cursor-help">
           {icon}
         </div>
       </TooltipTrigger>
