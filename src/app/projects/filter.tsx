@@ -34,7 +34,7 @@ function ProjectsFilter() {
               controlledItems
               className="bg-editor-background-highlight rounded-lg pointer-events-none"
             >
-              {projectTags.map((e, i) => {
+              {projectTags.map((e) => {
                 const isChecked = filter.includes(e);
                 return (
                   <label className="cursor-pointer" key={e}>
