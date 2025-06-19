@@ -7,8 +7,8 @@ import {
   Checkbox,
   FadeIn,
   Sidebar,
+  FileTreeItem,
 } from "@/components";
-import { FileButton } from "@/components/FileButton";
 import { MotionHighlight } from "@/components/MotionHighlight";
 import { projectTags } from "@/constants/projects";
 import { ProjectsContext } from "@/context/ProjectsContext";
@@ -38,7 +38,7 @@ function ProjectsFilter() {
                 const isChecked = filter.includes(e);
                 return (
                   <label className="cursor-pointer" key={e}>
-                    <FileButton
+                    <FileTreeItem
                       data-testid={`projects-filter-${e}`}
                       className="items-center"
                       sideComponentPosition="left"
@@ -52,7 +52,7 @@ function ProjectsFilter() {
                       }
                     >
                       {e}
-                    </FileButton>
+                    </FileTreeItem>
                   </label>
                 );
               })}

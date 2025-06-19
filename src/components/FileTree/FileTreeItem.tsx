@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/utils/styles";
 import { MotionHighlightItem } from "@/components/MotionHighlight";
 
-type FileButtonProps = React.ComponentProps<"div"> & {
+type FileTreeItemProps = React.ComponentProps<"div"> & {
   icons?: {
     close: React.ReactNode;
     open: React.ReactNode;
@@ -16,7 +16,7 @@ type FileButtonProps = React.ComponentProps<"div"> & {
   sideComponentPosition?: "left" | "right";
 };
 
-function FileButton({
+function FileTreeItem({
   children,
   className,
   icons,
@@ -25,11 +25,11 @@ function FileButton({
   sideComponent,
   sideComponentPosition = "right",
   ...props
-}: FileButtonProps) {
+}: FileTreeItemProps) {
   return (
     <MotionHighlightItem className="size-full">
       <div
-        data-slot="file-button"
+        data-slot="file-tree-item"
         className={cn(
           "flex items-center truncate gap-2 p-2 h-10 relative z-10 rounded-lg w-full cursor-default",
           className
@@ -68,11 +68,11 @@ function FileButton({
           </span>
         </span>
         {sideComponent && sideComponentPosition === "right" && (
-          <span className="flex">{sideComponent}</span>
+          <span className="flex ml-auto">{sideComponent}</span>
         )}
       </div>
     </MotionHighlightItem>
   );
 }
 
-export { FileButton, type FileButtonProps }; 
+export { FileTreeItem, type FileTreeItemProps }; 

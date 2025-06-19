@@ -6,8 +6,6 @@ export * from "./Transition";
 export * from "./ThemeProvider";
 export * from "./Accordion";
 export * from "./FileTree";
-export * from "./FileButton";
-export * from "./FileIcon";
 export * from "./Checkbox";
 export * from "./ThemePicker";
 export * from "./DropdownMenu";

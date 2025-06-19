@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { fileTreeType } from "@/types/fileTree";
+import { fileStatus, fileTreeType } from "@/types/fileTree";
 import {
   Accordion,
   AccordionContent,
@@ -9,14 +9,15 @@ import {
   AccordionTrigger,
   useAccordionItem,
 } from "@/components/Accordion";
-import { FileIcon } from "lucide-react";
 import { FolderIcon, FolderOpenIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/styles";
 import { MotionHighlight, MotionHighlightItem } from "@/components/MotionHighlight";
-import { FileButton } from "@/components/FileButton";
 import { ComponentProps } from "react";
+import { FileIcon } from "./FileIcon";
+import { FileStatus } from "./FileStatus";
+import { FileTreeItem } from "./FileTreeItem";
 
 interface FileTreeProps {
   files: fileTreeType;
@@ -28,15 +29,34 @@ interface FileTreeProps {
 
 interface FolderTriggerProps extends ComponentProps<typeof AccordionTrigger> {
   sideComponent?: React.ReactNode;
+  status?: string;
 }
 
 function FolderTrigger({
   children,
   className,
   sideComponent,
+  status,
   ...props
 }: FolderTriggerProps) {
   const { isOpen } = useAccordionItem();
+
+  const getStatusColor = (status?: string) => {
+    switch (status) {
+      case "new":
+        return "text-green-500";
+      case "modified":
+        return "text-amber-500";
+      case "deleted":
+        return "text-red-500";
+      case "untracked":
+        return "text-blue-500";
+      case "staged":
+        return "text-purple-500";
+      default:
+        return "";
+    }
+  };
 
   return (
     <AccordionTrigger
@@ -45,14 +65,14 @@ function FolderTrigger({
       {...props}
       chevron={false}
     >
-      <FileButton
+      <FileTreeItem
         open={isOpen}
         icons={{ open: <FolderOpenIcon />, close: <FolderIcon /> }}
-        className={className}
+        className={cn(className, getStatusColor(status))}
         sideComponent={sideComponent}
       >
         {children}
-      </FileButton>
+      </FileTreeItem>
     </AccordionTrigger>
   );
 }
@@ -67,6 +87,7 @@ interface FolderProps extends Omit<
   onOpenChange?: (open: string[]) => void;
   defaultOpen?: string[];
   sideComponent?: React.ReactNode;
+  status?: string;
 }
 
 function Folder({
@@ -77,8 +98,11 @@ function Folder({
   defaultOpen,
   onOpenChange,
   sideComponent,
+  status,
   ...props
 }: FolderProps) {
+  const statusComponent = status ? <FileStatus status={status as fileStatus} type="dot" /> : sideComponent;
+
   return (
     <AccordionItem
         data-slot="folder"
@@ -88,7 +112,7 @@ function Folder({
       >
 
     <MotionHighlightItem value={name} className="relative z-10">
-        <FolderTrigger className={className} sideComponent={sideComponent}>
+        <FolderTrigger className={className} sideComponent={statusComponent} status={status}>
           {name}
         </FolderTrigger>
         </MotionHighlightItem>
@@ -112,25 +136,44 @@ interface FileProps extends Omit<React.ComponentProps<"div">, "children"> {
   name: string;
   href?: string;
   sideComponent?: React.ReactNode;
+  status?: string;
 }
 
-function File({ name, className, href, sideComponent, ...props }: FileProps) {
+function File({ name, className, href, sideComponent, status, ...props }: FileProps) {
   const pathname = usePathname();
   const isActive = href && pathname === href;
 
-  const content = (
+  const getStatusColor = (status?: string) => {
+    switch (status) {
+      case "new":
+        return "text-green-500";
+      case "modified":
+        return "text-amber-500";
+      case "deleted":
+        return "text-red-500";
+      case "untracked":
+        return "text-blue-500";
+      case "staged":
+        return "text-purple-500";
+      default:
+        return "";
+    }
+  };
 
-      <FileButton
+  const statusComponent = status ? <FileStatus status={status as fileStatus} type="label" /> : sideComponent;
+
+  const content = (
+      <FileTreeItem
         data-slot="file"
-        icon={<FileIcon />}
-        className={cn(className, {
+        icon={<FileIcon name={name} />}
+        className={cn(className, getStatusColor(status), {
           "bg-editor-background-highlight": isActive,
         })}
-        sideComponent={sideComponent}
+        sideComponent={statusComponent}
         {...props}
         >
         {name}
-      </FileButton>
+      </FileTreeItem>
   );
 
   if (href) {
@@ -157,7 +200,6 @@ function FileTree({
   return (
         <Accordion
           type="multiple"
-          className="px-2"
           defaultValue={defaultOpen}
           value={open}
           onValueChange={onOpenChange}
@@ -165,7 +207,12 @@ function FileTree({
           {files.map((item) => {
             if (item.type === "folder") {
               return (
-                <Folder key={item.name} name={item.name}>
+                <Folder 
+                  key={item.name} 
+                  name={item.name}
+                  status={item.status}
+                  sideComponent={item.sideComponent}
+                >
                   <FileTree files={item.children} />
                 </Folder>
               );
@@ -176,6 +223,8 @@ function FileTree({
                 key={item.name}
                 name={item.name}
                 href={item.href}
+                status={item.status}
+                sideComponent={item.sideComponent}
               />
             );
           })}
@@ -189,7 +238,7 @@ const FileTreeTopLevel = (props: FileTreeProps) => {
     <div
     data-slot="files"
     className={cn(
-      "relative size-full rounded-xl bg-background overflow-auto",
+      "relative size-full rounded-xl bg-background overflow-auto px-2",
       props.className
     )}
   >
@@ -205,4 +254,14 @@ const FileTreeTopLevel = (props: FileTreeProps) => {
   );
 };
 
-export { FileTreeTopLevel as FileTree, Folder, File, type FileTreeProps, type FolderProps, type FileProps };
+export { 
+  FileTreeTopLevel as FileTree, 
+  Folder, 
+  File, 
+  FileTreeItem,
+  FileIcon,
+  FileStatus,
+  type FileTreeProps, 
+  type FolderProps, 
+  type FileProps 
+};

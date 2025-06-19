@@ -13,22 +13,14 @@ import {
   StickyNoteIcon,
   PresentationIcon,
   FileTextIcon as FileDocumentIcon,
-  FolderIcon,
-  FolderOpenIcon,
 } from "lucide-react";
 
 interface FileIconProps {
   name: string;
-  isFolder?: boolean;
-  isOpen?: boolean;
   size?: number;
 }
 
-function FileIcon({ name, isFolder, isOpen, size = 16 }: FileIconProps) {
-  if (isFolder) {
-    return isOpen ? <FolderOpenIcon size={size} /> : <FolderIcon size={size} />;
-  }
-
+function FileIcon({ name, size = 16 }: FileIconProps) {
   const extension = name.split(".").pop()?.toLowerCase();
 
   switch (extension) {
