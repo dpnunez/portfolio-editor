@@ -1,122 +1,208 @@
 "use client";
+
+import * as React from "react";
 import { fileTreeType } from "@/types/fileTree";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  useAccordionItem,
 } from "@/components/Accordion";
-import { ChevronDown } from "lucide-react";
-import { SiTypescript } from "react-icons/si";
-import { FaFolder } from "react-icons/fa6";
+import { FileIcon } from "lucide-react";
+import { FolderIcon, FolderOpenIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/styles";
-import * as motion from "motion/react-client";
+import { MotionHighlight, MotionHighlightItem } from "@/components/MotionHighlight";
+import { FileButton } from "@/components/FileButton";
 import { ComponentProps } from "react";
 
 interface FileTreeProps {
   files: fileTreeType;
   className?: string;
+  defaultOpen?: string[];
+  open?: string[];
+  onOpenChange?: (open: string[]) => void;
 }
 
-function FileTree({ files, className }: FileTreeProps) {
-  const pathname = usePathname();
-
-  return (
-    <div className={className}>
-      {files.map((item, i) => {
-        const isFolder = item.type === "folder";
-        const isActive = !isFolder && pathname === item.href;
-
-        if (isFolder)
-          return (
-            <Accordion key={item.name} type="single" collapsible>
-              <AccordionItem value="1" className="border-b-0">
-                <AccordionTrigger className="[&>.indicator]:hidden [&[data-state=open]_.folder-indicator]:rotate-0">
-                  <TreeRowContainer
-                    className="px-8"
-                    transition={{
-                      delay: 0.1 * i,
-                      ease: "backInOut",
-                      duration: 0.3,
-                    }}
-                  >
-                    <ChevronDown
-                      size={16}
-                      className="folder-indicator transition-all -rotate-90 absolute left-2"
-                    />
-                    <TreeRowIcon>
-                      <FaFolder size={14} />
-                    </TreeRowIcon>
-                    {item.name}
-                  </TreeRowContainer>
-                </AccordionTrigger>
-                <AccordionContent className="pb-0">
-                  <FileTree className="ml-4" files={item.children} />
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          );
-
-        return (
-          <Link key={item.name} href={item.href}>
-            <TreeRowContainer
-              transition={{
-                delay: 0.1 * i,
-                ease: "backInOut",
-                duration: 0.3,
-              }}
-              key={item.name}
-              data-is-file-active={isActive}
-              className={cn("hover:bg-editor-hover", {
-                "bg-editor-background-highlight": isActive,
-              })}
-            >
-              <TreeRowIcon>
-                {item.icon ?? <SiTypescript size={14} />}
-              </TreeRowIcon>
-              {item.name}
-            </TreeRowContainer>
-          </Link>
-        );
-      })}
-    </div>
-  );
+interface FolderTriggerProps extends ComponentProps<typeof AccordionTrigger> {
+  sideComponent?: React.ReactNode;
 }
 
-interface TreeRowContainerProps extends ComponentProps<typeof motion.div> {
-  children: React.ReactNode;
-}
-
-function TreeRowContainer({
+function FolderTrigger({
   children,
   className,
+  sideComponent,
   ...props
-}: TreeRowContainerProps) {
+}: FolderTriggerProps) {
+  const { isOpen } = useAccordionItem();
+
   return (
-    <div className="overflow-hidden">
-      <motion.div
-        initial={{
-          y: "150%",
-        }}
-        animate={{
-          y: 0,
-        }}
-        className={cn(
-          "flex items-center px-6 relative text-lg flex-1 rounded-md mx-2 transition-all",
-          className
-        )}
-        {...props}
+    <AccordionTrigger
+      data-slot="folder-trigger"
+      className="h-auto py-0 hover:no-underline font-normal relative z-10 max-w-full"
+      {...props}
+      chevron={false}
+    >
+      <FileButton
+        open={isOpen}
+        icons={{ open: <FolderOpenIcon />, close: <FolderIcon /> }}
+        className={className}
+        sideComponent={sideComponent}
       >
         {children}
-      </motion.div>
-    </div>
+      </FileButton>
+    </AccordionTrigger>
   );
 }
 
-function TreeRowIcon({ children }: { children: React.ReactNode }) {
-  return <div className="w-6">{children}</div>;
+interface FolderProps extends Omit<
+  ComponentProps<typeof AccordionItem>,
+  "value" | "onValueChange" | "defaultValue" | "children"
+> {
+  children?: React.ReactNode;
+  name: string;
+  open?: string[];
+  onOpenChange?: (open: string[]) => void;
+  defaultOpen?: string[];
+  sideComponent?: React.ReactNode;
 }
 
-export { FileTree, TreeRowContainer, TreeRowIcon };
+function Folder({
+  children,
+  className,
+  name,
+  open,
+  defaultOpen,
+  onOpenChange,
+  sideComponent,
+  ...props
+}: FolderProps) {
+  return (
+    <AccordionItem
+        data-slot="folder"
+        value={name}
+        className="relative border-b-0"
+        {...props}
+      >
+
+    <MotionHighlightItem value={name} className="relative z-10">
+        <FolderTrigger className={className} sideComponent={sideComponent}>
+          {name}
+        </FolderTrigger>
+        </MotionHighlightItem>
+        {children && (
+          <AccordionContent className="relative pb-0 !ml-7 before:absolute before:-left-3 before:inset-y-0 before:w-px before:h-full before:bg-border">
+            <Accordion
+              type="multiple"
+              defaultValue={defaultOpen}
+              value={open}
+              onValueChange={onOpenChange}
+            >
+              {children}
+            </Accordion>
+          </AccordionContent>
+        )}
+      </AccordionItem>
+  );
+}
+
+interface FileProps extends Omit<React.ComponentProps<"div">, "children"> {
+  name: string;
+  href?: string;
+  sideComponent?: React.ReactNode;
+}
+
+function File({ name, className, href, sideComponent, ...props }: FileProps) {
+  const pathname = usePathname();
+  const isActive = href && pathname === href;
+
+  const content = (
+
+      <FileButton
+        data-slot="file"
+        icon={<FileIcon />}
+        className={cn(className, {
+          "bg-editor-background-highlight": isActive,
+        })}
+        sideComponent={sideComponent}
+        {...props}
+        >
+        {name}
+      </FileButton>
+  );
+
+  if (href) {
+    return (
+      <MotionHighlightItem value={name}>
+        <Link href={href}>{content}</Link>
+      </MotionHighlightItem>
+    );
+  }
+
+  return (
+    <MotionHighlightItem value={name}>
+      {content}
+    </MotionHighlightItem>
+  );
+}
+
+function FileTree({
+  files,
+  defaultOpen,
+  open,
+  onOpenChange,
+}: FileTreeProps) {
+  return (
+        <Accordion
+          type="multiple"
+          className="px-2"
+          defaultValue={defaultOpen}
+          value={open}
+          onValueChange={onOpenChange}
+        >
+          {files.map((item) => {
+            if (item.type === "folder") {
+              return (
+                <Folder key={item.name} name={item.name}>
+                  <FileTree files={item.children} />
+                </Folder>
+              );
+            }
+
+            return (
+              <File
+                key={item.name}
+                name={item.name}
+                href={item.href}
+              />
+            );
+          })}
+        </Accordion>
+  );
+}
+
+
+const FileTreeTopLevel = (props: FileTreeProps) => {
+  return (
+    <div
+    data-slot="files"
+    className={cn(
+      "relative size-full rounded-xl bg-background overflow-auto",
+      props.className
+    )}
+  >
+    <MotionHighlight
+      mode="parent"
+      controlledItems={true}
+      hover
+      className="bg-editor-background-highlight rounded-lg pointer-events-none"
+    >
+      <FileTree {...props} />
+    </MotionHighlight>
+  </div>
+  );
+};
+
+export { FileTreeTopLevel as FileTree, Folder, File, type FileTreeProps, type FolderProps, type FileProps };
