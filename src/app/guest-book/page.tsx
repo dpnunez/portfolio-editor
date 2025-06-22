@@ -1,4 +1,4 @@
-import { FadeIn, MainContent, PageSubtitle, PageTitle } from "@/components";
+import { MainContent, PageSubtitle, PageTitle } from "@/components";
 import { GuestBookList } from "./list";
 import { auth } from "@/auth";
 import axios from "axios";
@@ -16,17 +16,15 @@ async function Page() {
   );
 
   return (
-    <FadeIn>
-      <MainContent className="py-10 max-w-screen-xl w-full mx-auto">
-        <PageTitle>Guest Book</PageTitle>
+    <MainContent className="py-10 max-w-screen-xl w-full mx-auto">
+      <PageTitle>Guest Book</PageTitle>
 
-        <PageSubtitle>
-          {"//"} This is a guest book. Please leave a message below.
-        </PageSubtitle>
+      <PageSubtitle>
+        {"//"} This is a guest book. Please leave a message below.
+      </PageSubtitle>
 
-        <GuestBookList hasSent={hasSent} initialBookData={bookData.data} />
-      </MainContent>
-    </FadeIn>
+      <GuestBookList hasSent={hasSent} initialBookData={bookData.data} />
+    </MainContent>
   );
 }
 
