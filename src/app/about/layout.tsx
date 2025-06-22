@@ -9,7 +9,7 @@ import {
   MainContent,
   Sidebar,
 } from "@/components";
-import { aboutFileTree } from "@/constants/fileTrees";
+import { aboutFileTree } from "@/constants/aboutNavigation";
 
 interface LayoutProps {
   children: ReactNode;
