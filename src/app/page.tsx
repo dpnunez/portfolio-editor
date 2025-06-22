@@ -13,7 +13,7 @@ function Page() {
         <h2 className="text-lg mb-4 text-center md:text-left">
           <span>{"> "}</span>
           <span>
-            Full Stack Developer, specialized in Javascript environment
+            Full Stack Developer, specialized in Typescript environment
           </span>
         </h2>
 
