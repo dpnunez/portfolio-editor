@@ -13,37 +13,37 @@ function FileStatus({ status, className, type = "dot" }: FileStatusProps) {
       case "new":
         return {
           label: "N",
-          color: "bg-green-500 text-white",
+          color: "text-green-500",
           bgColor: "bg-green-500",
         };
       case "modified":
         return {
           label: "M",
-          color: "bg-amber-500 text-white",
+          color: "text-amber-500",
           bgColor: "bg-amber-500",
         };
       case "deleted":
         return {
           label: "D",
-          color: "bg-red-500 text-white",
+          color: "text-red-500",
           bgColor: "bg-red-500",
         };
       case "untracked":
         return {
           label: "U",
-          color: "bg-blue-500 text-white",
+          color: "text-blue-500",
           bgColor: "bg-blue-500",
         };
       case "staged":
         return {
           label: "S",
-          color: "bg-purple-500 text-white",
+          color: "text-purple-500",
           bgColor: "bg-purple-500",
         };
       default:
         return {
           label: "?",
-          color: "bg-gray-500 text-white",
+          color: "text-gray-500",
           bgColor: "bg-gray-500",
         };
     }
@@ -52,18 +52,27 @@ function FileStatus({ status, className, type = "dot" }: FileStatusProps) {
   const config = getStatusConfig(status);
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div
+      className={cn("flex justify-center items-center gap-2 w-4", className)}
+    >
       {/* Status indicator dot */}
-      {type === "dot" && <div className={cn("rounded-full size-2", config.bgColor)} />}
-      
+      {type === "dot" && (
+        <div className={cn("rounded-full size-2", config.bgColor)} />
+      )}
+
       {/* Status label */}
       {type === "label" && (
-        <span className={cn("font-medium text-xs px-1.5 py-0.5 rounded", config.color)}>
-          {config.label}  
+        <span
+          className={cn(
+            "font-bold text-xs px-1.5 py-0.5 rounded",
+            config.color
+          )}
+        >
+          {config.label}
         </span>
       )}
     </div>
   );
 }
 
-export { FileStatus, type FileStatusProps }; 
+export { FileStatus, type FileStatusProps };
