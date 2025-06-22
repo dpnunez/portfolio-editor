@@ -13,7 +13,7 @@ import {
   DrawerTrigger,
   FileTree,
 } from "@/components";
-import { mobileNavigation } from "@/constants/fileTrees";
+import { aboutFileTreeMobile } from "@/constants/aboutNavigation";
 
 function isRouteActive(href: string, pathname: string) {
   return pathname.includes(href);
@@ -39,7 +39,7 @@ function Menu() {
               </DrawerDescription>
             </DrawerHeader>
 
-            <FileTree className="mb-5" files={mobileNavigation} />
+            <FileTree className="mb-5" files={aboutFileTreeMobile} />
           </DrawerContent>
         </Drawer>
       </nav>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ActiveIndicator } from "@/components";
+import { ActiveRouteIndicator } from "@/components";
 
 function Logo() {
   const pathname = usePathname();
@@ -19,7 +19,7 @@ function Logo() {
           &nbsp;{"> "}dpnunez
         </span>
       </h1>
-      {active && <ActiveIndicator />}
+      {active && <ActiveRouteIndicator />}
     </Link>
   );
 }
