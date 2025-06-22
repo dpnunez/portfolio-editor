@@ -36,7 +36,6 @@ const AccordionItem = React.forwardRef<
       <AccordionPrimitive.Item
         ref={ref}
         className={cn("border-b border-editor-divider", className)}
-        
         {...props}
       >
         {children}
@@ -97,7 +96,9 @@ const AccordionTrigger = React.forwardRef<
         {chevron && (
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
-            transition={transition ?? { type: "spring", stiffness: 150, damping: 22 }}
+            transition={
+              transition ?? { type: "spring", stiffness: 150, damping: 22 }
+            }
           >
             <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 indicator" />
           </motion.div>
@@ -132,7 +133,9 @@ const AccordionContent = React.forwardRef<
             initial={{ height: 0, opacity: 0, "--mask-stop": "0%" }}
             animate={{ height: "auto", opacity: 1, "--mask-stop": "100%" }}
             exit={{ height: 0, opacity: 0, "--mask-stop": "0%" }}
-            transition={transition ?? { type: "spring", stiffness: 150, damping: 22 }}
+            transition={
+              transition ?? { type: "spring", stiffness: 150, damping: 22 }
+            }
             style={{
               maskImage:
                 "linear-gradient(black var(--mask-stop), transparent var(--mask-stop))",
@@ -150,4 +153,10 @@ const AccordionContent = React.forwardRef<
 
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, useAccordionItem };
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  useAccordionItem,
+};
