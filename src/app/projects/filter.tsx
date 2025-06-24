@@ -6,10 +6,10 @@ import {
   AccordionTrigger,
   Checkbox,
   FadeIn,
-  Sidebar,
   FileTreeItem,
+  Sidebar,
+  MotionHighlight,
 } from "@/components";
-import { MotionHighlight } from "@/components/MotionHighlight";
 import { projectTags } from "@/constants/projects";
 import { ProjectsContext } from "@/context/ProjectsContext";
 import { use } from "react";

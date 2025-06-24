@@ -3,7 +3,7 @@
 import * as React from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/utils/styles";
-import { MotionHighlightItem } from "@/components/MotionHighlight";
+import { MotionHighlightItem } from "../";
 
 type FileTreeItemProps = React.ComponentProps<"div"> & {
   icons?: {
@@ -58,8 +58,8 @@ function FileTreeItem({
                         ? icons.open
                         : null
                       : typeof icons.close !== "string"
-                      ? icons.close
-                      : null}
+                        ? icons.close
+                        : null}
                   </motion.span>
                 </AnimatePresence>
               )}
@@ -75,4 +75,4 @@ function FileTreeItem({
   );
 }
 
-export { FileTreeItem, type FileTreeItemProps }; 
+export { FileTreeItem, type FileTreeItemProps };

@@ -1,7 +1,7 @@
 import { formStatus } from "@/types/form";
 import { ButtonHTMLAttributes, ReactNode, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "../Button";
+import { Button } from "@/components";
 
 interface FormButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   SuccessSlot: ReactNode;

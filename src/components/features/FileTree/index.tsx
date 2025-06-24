@@ -8,15 +8,12 @@ import {
   AccordionItem,
   AccordionTrigger,
   useAccordionItem,
-} from "@/components/Accordion";
+} from "@/components";
 import { FolderIcon, FolderOpenIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/styles";
-import {
-  MotionHighlight,
-  MotionHighlightItem,
-} from "@/components/MotionHighlight";
+import { MotionHighlight, MotionHighlightItem } from "@/components";
 import { ComponentProps } from "react";
 import { FileIcon } from "./FileIcon";
 import { FileStatus } from "./FileStatus";
@@ -270,9 +267,9 @@ export {
   FileTreeTopLevel as FileTree,
   Folder,
   File,
-  FileTreeItem,
   FileIcon,
   FileStatus,
+  FileTreeItem,
   type FileTreeProps,
   type FolderProps,
   type FileProps,
