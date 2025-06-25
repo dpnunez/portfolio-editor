@@ -17,6 +17,10 @@ const menuData: menuItem[] = [
     label: "Contact.tsx",
     href: "/contact",
   },
+  {
+    label: "ComputerThreeJs.tsx",
+    href: "/computer-threejs",
+  },
 ];
 
 export { menuData };
