@@ -1,13 +1,12 @@
 "use client";
 
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AsciiRenderer } from "@react-three/drei";
-import { Suspense, useRef, useState, useEffect } from "react";
-import * as THREE from "three";
+import { Suspense, useState, useEffect } from "react";
 
-// Simple square component with mouse rotation
-function Square() {
-  const meshRef = useRef<THREE.Mesh>(null);
+// Component to handle camera rotation
+function CameraController() {
+  const { camera } = useThree();
   const [mouseX, setMouseX] = useState(0);
 
   useEffect(() => {
@@ -22,16 +21,26 @@ function Square() {
   }, []);
 
   useFrame(() => {
-    if (meshRef.current) {
-      // Rotate the square based on mouse X position
-      // Multiply by Math.PI to get full rotation range
-      meshRef.current.rotation.y = mouseX * Math.PI;
-    }
+    // Calculate camera position based on mouse X
+    const radius = 5;
+    const angle = mouseX * Math.PI;
+
+    camera.position.x = Math.sin(angle) * radius;
+    camera.position.z = Math.cos(angle) * radius;
+    camera.position.y = 0;
+
+    // Make camera look at the center
+    camera.lookAt(0, 0, 0);
   });
 
+  return null;
+}
+
+// Simple square component
+function Square() {
   return (
-    <mesh ref={meshRef}>
-      <boxGeometry args={[1, 1, 1]} />
+    <mesh>
+      <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial color="orange" />
     </mesh>
   );
@@ -50,6 +59,9 @@ export default function ComputerThreeJs() {
 
           {/* The square */}
           <Square />
+
+          {/* Camera controller */}
+          <CameraController />
         </Suspense>
         <AsciiRenderer fgColor="white" bgColor="black" />
       </Canvas>
