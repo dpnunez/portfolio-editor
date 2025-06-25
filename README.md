@@ -45,6 +45,19 @@ This project is powered by an array of cutting-edge technologies that provide a 
 
 <br />
 
+## 📁 **Project Structure - Components**
+
+The components are organized in a modular architecture to ensure maintainability and reusability:
+
+### **`/src/components/`**
+
+- **`/common/`** - Reusable components used across multiple pages
+- **`/features/`** - Feature-specific components with business logic
+- **`/layout/`** - Layout and structural components
+- **`/ui/`** - Base UI components (ShadCN/Radix UI)
+
+<br />
+
 ## ✨ **Features**
 
 ### **💻 Interactive Code Editor Simulation**
@@ -107,27 +120,26 @@ npm run dev
 
 Your local server should be running at [http://localhost:3000](http://localhost:3000).
 
+### Extra: **Running on Docker**
 
-### Extra: **Running on Docker**  
-
-You can also run the portfolio using Docker in two modes:  
+You can also run the portfolio using Docker in two modes:
 
 1. **Development server**  
-   Runs the project with hot-reloading support for easier development. Use the following command:  
+   Runs the project with hot-reloading support for easier development. Use the following command:
+
    ```bash
    docker-compose -f docker-compose.dev.yml up --build
-   ```  
+   ```
 
 2. **Production server**  
-   Builds the project and runs it in production mode. Use the following command:  
+   Builds the project and runs it in production mode. Use the following command:
    ```bash
    docker-compose -f docker-compose.prod.yml up --build
-   ```  
-
+   ```
 
 ### 4. **Prisma Setup (Optional for Database Integration)**
 
-If you’re planning to use the back-end features:
+If you're planning to use the back-end features:
 
 1. Generate the Prisma client:
 
