@@ -2,18 +2,19 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { AsciiRenderer } from "@react-three/drei";
-import { Suspense, useState, useEffect } from "react";
+import { Suspense, useState, useEffect, useRef } from "react";
 
 // Component to handle camera rotation
 function CameraController() {
   const { camera } = useThree();
-  const [mouseX, setMouseX] = useState(0);
+  const mouseX = useRef(0);
+  const [targetMouseX, setTargetMouseX] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      // Normalize mouse position to -1 to 1 range
-      const normalizedX = (event.clientX / window.innerWidth) * 2 - 1;
-      setMouseX(normalizedX);
+      // Normalize mouse position to -1 to 1 range and invert the direction
+      const normalizedX = -((event.clientX / window.innerWidth) * 2 - 1);
+      setTargetMouseX(normalizedX);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -21,13 +22,16 @@ function CameraController() {
   }, []);
 
   useFrame(() => {
+    // Smooth interpolation
+    mouseX.current += (targetMouseX - mouseX.current) * 0.05;
+
     // Calculate camera position based on mouse X
-    const radius = 5;
-    const angle = mouseX * Math.PI;
+    const radius = 8;
+    const angle = mouseX.current * Math.PI;
 
     camera.position.x = Math.sin(angle) * radius;
     camera.position.z = Math.cos(angle) * radius;
-    camera.position.y = 0;
+    camera.position.y = 2;
 
     // Make camera look at the center
     camera.lookAt(0, 0, 0);
